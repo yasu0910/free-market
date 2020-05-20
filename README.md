@@ -29,10 +29,10 @@ Things you may want to cover:
 |nickname|string|null: false|
 |password|integer|null: false|
 |email|string|null: false|
-|user_first_name|string|null: false|
-|user_last_name|string|null: false|
-|user_first_name_hurigana|string|null: false|
-|user_last_name_hurigana|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name_hurigana|string|null: false|
+|last_name_hurigana|string|null: false|
 |birthday|date|null: false|
 ### Association
 - has_many :items
@@ -42,10 +42,10 @@ Things you may want to cover:
 ## delivery_infosテーブル
 |Column|Type|Options|
 |------|----|-------|
-|delivery_first_name|string|null: false|
-|delivery_last_name|string|null: false|
-|delivery_first_name_hurigana|string|null: false|
-|delivery_last_name_hurigana|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_name_hurigana|string|null: false|
+|last_name_hurigana|string|null: false|
 |postal_code|integer|null: false|
 |state|string|null: false|
 |city|string|null: false|
@@ -60,14 +60,15 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|item_name|string|null: false|
-|item_content|text|null: false|
-|item_brand|string|null: false|
-|item_status|string|null: false|
+|name|string|null: false|
+|content|text|null: false|
+|brand|string|null: false|
+|status|string|null: false|
 |postage|integer|null: false|
 |ship_from_address|string|null: false|
 |shipping_days|date|null: false|
 |price|integer|null: false|
+|category_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - has_many :images
