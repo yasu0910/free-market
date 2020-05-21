@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+@mixin app_main_color() {
+  background-color: #3CCACE;
+}
+
+@mixin font_property($color: #fff, $fSize: 16px) {
+  color: $color;
+  font-size: $fSize;
+} 
