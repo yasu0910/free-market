@@ -1,0 +1,61 @@
+.my-container {
+  width: 100vw;
+  height: 100vh;
+  .my-content {
+    .mypage__content {
+      position: relative;
+      height: 155px;
+      padding: 20px;
+      background-image: url(material/pict/pict-reason-03.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+      .content__link {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translate(0, -50%);
+        color: #333;
+        .icon {
+          width: 60px;
+          height: 60px;
+        }
+          margin: 8px 0 0;
+          font-size: 14px;
+        }
+        .mypage-content__number {
+          text-align: center;
+          display: flex;
+          .evaluation {
+
+          }
+          .exhibition {
+            
+          }
+            .count {
+            }
+        }
+      }
+    }
+    .mypage__content__tab {
+      .content-tabs {
+        .coment__btn{
+
+        }
+      }
+    }
+    .tab-box {
+      .tab-box-list {
+
+      }
+      .todo-not-item {
+
+      }
+    }
+  }
+  .my-side {
+
+  }
+}
