@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root 'items#confirm'
+
+  root 'items#index'
+
 end

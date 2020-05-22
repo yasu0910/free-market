@@ -1,20 +1,12 @@
 @import 'reset';
+@import 'setting';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import 'items';
+@import 'header';
+@import 'main';
+@import 'footer';
+@import 'purchase-btn';
 @import 'sell';
 @import 'confirm';
-
-
-* {
-  box-sizing: border-box;
-}
-
-@mixin app_main_color() {
-  background-color: #3CCACE;
-}
-
-@mixin font_property($color: #fff, $fSize: 16px) {
-  color: $color;
-  font-size: $fSize;
-} 
+@import 'app-banner';
