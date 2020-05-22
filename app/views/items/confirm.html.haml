@@ -1,0 +1,41 @@
+%header.header
+  %img.logo{src: "/assets/material/logo/logo.png"}
+
+%main.main
+  .main__center-items
+    .content-head
+      購入内容の確認
+
+    .content-middle
+      .item
+        .item__image-box
+          %img.item-image{src: "/assets/material/logo/logo.png"}      
+        .item__info
+          %p.item__info__name
+            item name
+          %p.item__info__price
+            999999999999999999999
+
+    .content-bottom
+      .content-bottom__inner
+        .buy-price
+          %p.buy-price__name
+            支払い金額
+          %p.buy-price__result
+            2500
+        %hr
+        .info
+          .info__title
+            支払い方法
+          = link_to "#", class:"link-btn" do
+            = icon('fas', 'plus-circle', class: "plus-icon")
+            登録してください
+        %hr
+        .info
+          .info__title
+            配達先
+          = link_to "#", class:"link-btn" do
+            = icon('fas', 'plus-circle', class: "plus-icon")
+            登録してください
+        %hr
+        %input.submit-btn{type: "submit", value: "購入する"}
