@@ -1,0 +1,59 @@
+-# FURIMAのロゴ
+.header
+  .header__content
+    %h1.header__content__logo
+      %img.header__content__logo__image{src: 'assets/material/logo/logo.png'}
+
+
+
+-# ログイン画面
+.login
+  .login__menu
+    .login__menu__btns
+    アカウントをお持ちでない方はこちら
+    = link_to "#", class: "btn email" do
+      新規会員登録
+    -# 既に登録している人のボタン
+    .login__menu__innner
+      = link_to "#", class: "btn facebook" do
+        = icon('fab', 'facebook-square')
+        Facebookで登録
+      = link_to "#", class: "btn google" do
+        = icon('fab', 'google')
+        Googleで登録
+    -# アドレス・パスワード記入欄
+    .login__menu__new
+      .login__menu__new__mail
+        %input{type: "text", class: "mail",placeholder: "メールアドレス"}
+      .login__menu__new__password
+        %input{type: "text", class: "password",placeholder: "パスワード"}
+      -# ログインボタン
+      .login__menu__new__submit
+        %input{type: "submit", class: "submit", value: "ログイン"}
+      .login__menu__new__forget
+        = link_to "#", class: "forget" do
+          パスワードをお忘れの方
+
+
+
+
+
+
+-# トップページのフッター　
+.footer
+  .footer__content
+    %ul
+      %li<
+        %a{ :href => '#', :id => 'privacy' }
+          プライバシーポリシー
+      %li<
+        %a{ :href => '#', :id => 'tos' }
+          FURIMA利用規約
+      %li<
+        %a{ :href => '#', :id => 'tokutei' }
+          特定商取引に関する規約
+    .footer__content__logo
+      %img.footer__content__logo__image{src: 'assets/material/logo/logo.png'}
+    %p
+      %small
+        FURIMA,Inc.
