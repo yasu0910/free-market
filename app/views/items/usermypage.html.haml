@@ -1,0 +1,136 @@
+.my-container
+  .my-content
+    .mypage-content
+      = link_to '#', class: 'content-link' do
+        %figure
+          %img.icon{src: 'assets/material/icon/member_photo_noimage_thumb.png'}
+        %h2.test-name テスト フリマ
+        .mypage-content-number
+          .evaluation
+            評価
+            %span.count 0
+          .exhibition
+            出品数
+            %span.count 0
+    .tabs
+      %ul.content-tabs
+        %li.information
+          %h3
+            = link_to '#', class: 'content__btn' do
+              お知らせ
+        %li.todo
+          %h3
+            = link_to '#', class: 'content__btn' do
+              やることリスト
+      .tab-boxs
+        %ul{id: 'tab-box-notification', class: 'tab-box'}
+          %li.tab-box__item
+            = link_to '#', class: 'tab-box__item__link' do
+              %figure
+                %img.icon{src: 'assets/material/icon/icon_brand.png'}
+              .tab-box__item__link__body
+                .tab-box__item__link__body__text
+                  《この通知を受け取ったあなた限定》「500ポイントバック」のクーポンをプレゼントしました！
+                .tab-box__item__link__body__time
+                  %i.tab-box__item__link__body__time__icon
+                  %span 1日前
+          %li.tab-box__list
+            = link_to '一覧を見る', '#'
+        -# %ul{id: 'tab-box-todo', class: 'tab-box'}
+        -#   %li.todo-not-item
+        -#     現在、やることリストはありません
+    .second-tabs
+      %h2.second-tabs-head 購入した商品
+      %ul.content-tabs
+        %li.transactions
+          %h3
+            = link_to '#', class: 'content__btn' do
+              取引中
+        %li.post-transactions
+          %h3
+            = link_to '#', class: 'content__btn' do
+              過去の取引
+      .tab-boxs
+        %ul{id: 'tab-box-during-trading', class: 'tab-box'} 
+          %li.during-trading
+            取引中の商品がありません
+        -# %ul{id: 'tab-box-past-transactions', class: 'tab-box'}
+        -#   %li.past-transactions
+        -#     過去に取引した商品はありません
+  .my-side
+    .my-side__navigation
+      .my-side__navigation__list
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item　active' do
+            マイページ
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            お知らせ
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            いいね！一覧
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            出品する
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            下書き一覧
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            出品した商品-出品中
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            出品した商品－取引中
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            出品した商品ー売却中
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            購入した商品ー取引中
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            購入した商品ー過去の取引
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            ニュース一覧
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            評価一覧
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            ガイド
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            お問い合わせ
+      %h3.my-side__navigation__head メルペイ
+      .my-side__navigation__list
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            売上・振込申請
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            ポイント
+      %h3.my-side__navigation__head 設定
+      .my-side__navigation__list
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            プロフィール
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            発送元・お届け先住所
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            支払い方法
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            メール/パスワード
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            本人情報
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            電話番号の確認
+        %li
+          = link_to '#', class: 'my-side__navigation__list__item' do
+            ログアウト
+

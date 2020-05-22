@@ -1,0 +1,180 @@
+* {
+  box-sizing: border-box;
+}
+
+.my-container {
+  margin: 40px auto 0;
+  width: 1020px;
+  background: #f5f5f5;
+
+  .my-content {
+    width: 100%;
+    .mypage-content {
+      position: relative;
+      height: 155px;
+      padding: 20px;
+      background-image: url(material/pict/pict-reason-03.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      text-align: center;
+
+      .content-link {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translate(0, -50%);
+        color: #333;
+        text-decoration: none;
+        figure {
+          overflow: hidden;
+          width: 60px;
+          height: 60px;
+          margin: 0 auto;
+          border-radius: 50%;
+          .icon {
+            width: 60px;
+            height: 60px;
+          }
+        }
+        .test-name {
+          margin: 8px 0 0;
+          font-size: 14px;
+          font-weight: bold;
+          line-height: 1.4;
+        }
+        .mypage-content-number {
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          .evaluation {
+          }
+          .exhibition {
+            margin: 0 0 0 16px;
+          }
+          .count {
+            margin: 0 0 0 8px;
+            font-size: 16px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    .tabs {
+      margin: 0;
+      background: #fff;
+      .content-tabs {
+        background: #eee;
+        display: flex;
+        height: 72px;
+        li {
+          width: 50%;
+          line-height: 72px;
+          text-align: center;
+        }
+        .information {
+          background-color: #fff;
+          border-top: 2px solid #ea352e;
+        }
+      }
+      .tab-boxs {
+        .tab-box {
+          li {
+            border-bottom: 1px solid #eee;
+          }
+          &__item {
+            .icon {
+              width: 48px;
+              height: 48px;
+            }
+          }
+          &__list {
+            padding: 16px;
+            a {
+              display: block;
+              height: 56px;
+              margin: 0 auto;
+              background: #eee;
+              color: #333;
+              line-height: 56px;
+              text-align: center;
+              text-decoration: none;
+            }
+          }
+          .todo-not-item {
+          }
+        }
+      }
+    }
+    .second-tabs {
+      margin: 0;
+      background: #fff;
+      .second-tabs-head {
+        padding: 0 4%;
+        background: #fafafa;
+        font-size: 16px;
+        line-height: 72px;
+      }
+      .content-tabs {
+        background: #eee;
+        display: flex;
+        height: 72px;
+        color: #333;
+        li {
+          width: 50%;
+          line-height: 72px;
+          text-align: center;
+        }
+        .transactions {
+          background-color: #fff;
+          border-top: 2px solid #ea352e;
+        }
+      }
+      .tab-boxs {
+        .tab-box {
+          }
+          .during-trading {
+            padding: 160px 0 60px;
+            background: url(material/icon/member_photo_noimage_thumb.png);
+            background-repeat: no-repeat;
+            background-position: center 40px;
+            background-size: 78px 85px;
+            text-align: center;
+            font-size: 16px;
+            color: #ccc;
+          }
+        }
+      }
+    }
+  }
+  .my-side {
+    margin: 40px auto 0;
+    &__navigation {
+      &__list {
+        list-style: none;
+        color: #333;
+        li {
+          border: 0;
+        }
+        &__item　active {
+          background: #eee;
+          font-weight: 600;
+        }
+        &__item {
+          position: relative;
+          display: block;
+          min-height: 48px;
+          padding: 16px;
+          background: #fff;
+          font-size: 14px;
+          color: #333;
+        }
+      }
+      &__head {
+        margin: 40px 4% 0;
+        font-size: 16px;
+      }
+    }
+  }
+}
