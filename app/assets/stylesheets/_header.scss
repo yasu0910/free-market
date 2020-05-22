@@ -39,7 +39,7 @@
           &__btn {
             height: 100%;
             width: 5%;
-            @include app_main_color();
+            @include app_main_background-color();
             cursor: pointer;
             &__icon {
               height: 100%;

@@ -3,6 +3,10 @@
 }
 
 @mixin app_main_color() {
+  color: #3CCACE;
+}
+
+@mixin app_main_background-color() {
   background-color: #3CCACE;
 }
 
