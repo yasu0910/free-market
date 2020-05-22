@@ -1,2 +1,41 @@
-%h1 Items#index
-%p testtest
+.header
+  -# FURIMAのロゴ
+  .header__content
+    %h1.header__content__logo
+      %img.header__content__logo__image{src: 'assets/material/logo/logo.png'}
+
+
+.contents
+  -# 登録ボタン
+  .contents__menu
+    新規会員登録
+  = link_to "#", class: "contents__btn contents__btn contents__btn--mail" do
+    = icon('far', 'envelope', class: "contents__btn--icon")
+    メールアドレスで登録
+  = link_to "#", class: "contents__btn contents__btn contents__btn--facebook" do
+    = icon('fab', 'facebook-square', class: "contents__btn--icon")
+    Facebookで登録
+  = link_to "#", class: "contents__btn contents__btn contents__btn--google" do
+    = icon('fab', 'google', class: "contents__btn--icon")
+    Googleで登録
+
+.footer
+  -# トップページのフッター　
+  .footer__content
+    %ul
+      %li<
+        %a{ :href => '#', :id => 'privacy' }
+          プライバシーポリシー
+      %li<
+        %a{ :href => '#', :id => 'tos' }
+          FURIMA利用規約
+      %li<
+        %a{ :href => '#', :id => 'tokutei' }
+          特定商取引に関する規約
+    .footer__content__logo
+      %img.footer__content__logo__image{src: 'assets/material/logo/logo.png'}
+    %p
+      %small
+        FURIMA,Inc.
+
+
