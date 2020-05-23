@@ -1,28 +1,4 @@
-/ヘッダー部分、後々別のビューで使用する可能性あり
-%header.header
-  .header__content
-    .header__content__main
-      %h1.header__content__main__logo
-        = link_to "#", class: "header__content__main__logo__link" do
-          %img{src: 'assets/material/logo/logo.png', class: "header__content__main__logo__link__img"}
-      .header__content__main__search-box
-        %form.header__content__main__search-box__form
-          %input.header__content__main__search-box__form__input{placeholder: "キーワードから探す"}
-          %button.header__content__main__search-box__form__btn{type: "submit"}
-            .header__content__main__search-box__form__btn__icon
-              %img{src: 'assets/material/icon/icon-search 1.png', class: "header__content__main__search-box__form__btn__icon__img"}
-    .header__content__nav
-      %ul.header__content__nav__left-list
-        %li.header__content__nav__left-list__item
-          = link_to "カテゴリー", "#", class: "header__content__nav__left-list__item__link"
-        %li.header__content__nav__left-list__item
-          = link_to "ブランド", "#", class: "header__content__nav__left-list__item__link" 
-      %ul.header__content__nav__right-list
-        %li.header__content__nav__right-list__item
-          = link_to "ログイン", "#", class: "header__content__nav__right-list__item__link" 
-        %li.header__content__nav__right-list__item
-          = link_to "新規会員登録", "#", class: "header__content__nav__right-list__item__link"
-
+= render partial: 'header'
 
 /コンテンツ部分
 .main
@@ -232,62 +208,9 @@
                 %p.main__pickup__product__lists__list__link__body__details__include-tax
                   (税込)
 
-/appバナー
-%aside.app-banner
-  .app-banner__inner
-    .app-banner__inner__title
-      だれでもかんたん、人生を変えるフリマアプリ
-    .app-banner__inner__text
-      今すぐ無料ダウンロード！
-    .app-banner__inner__icon
-      = link_to "#", class: "app-banner__inner__icon__apple-store-link" do
-        %img{src: 'assets/material/apple-store.svg', class: "app-banner__inner__icon__apple-store-link__img"}
-      = link_to "#", class: "app-banner__inner__icon__google-play-link" do
-        %img{src: 'assets/material/google-play.svg', class: "app-banner__inner__icon__google-play-link__img"}
+= render partial: 'app-banner'
 
-/footer部分。複数回使用の可能性あり
-.footer
-  %ul.footer__contents
-    %li.footer__contents__content
-      %h2.footer__contents__content__head
-        FURIMAについて
-      %ul
-        %li
-          = link_to "会社概要（運営会社）", "#"
-        %li
-          = link_to "プライバシーポリシー", "#"
-        %li
-          = link_to "FURIMA利用規約", "#"
-        %li
-          = link_to "ポイントに関する特約", "#"
-    %li.footer__contents__content
-      %h2.footer__contents__content__head
-        FURIMAを見る
-      %ul
-        %li
-          = link_to "カテゴリー一覧", "#"
-        %li
-          = link_to "ブランド一覧", "#"
-    %li.footer__contents__content
-      %h2.footer__contents__content__head
-        ヘルプ＆ガイド
-      %ul
-        %li
-          = link_to "FURIMAガイド", "#"
-        %li
-          = link_to "FURIMAロゴ利用ガイドライン", "#"
-        %li
-          = link_to "お知らせ", "#"
-  .footer__logo
-    = link_to root_path do
-      %img{src: 'assets/material/logo/logo-white.png'}
-  %p
-    © FURIMA
+= render partial: 'footer'
 
-/購入ボタン。複数ページで使用可能性あり
-%a{href: "#"}
-  .purchase-btn
-    %span{class: "purchase-btn__text"}
-      出品する
-    %img{class: "purchase-btn__icon", src: 'assets/material/icon/icon_camera.png'}
+= render partial: 'purchase-btn'
     
