@@ -1,0 +1,102 @@
+
+.main{
+  .main__center-items {
+    max-width: 700px;
+    margin: auto;
+
+    .content-head{
+      padding: 32px;
+      font-size: 22px;
+      text-align: center;
+      background-color: #fff;
+      margin-bottom: 1px;    
+    }
+
+    .content-middle {
+      padding: 32px 16px;
+      background-color: #fff;
+      margin-bottom: 1px;   
+      .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &__image-box {
+          height: 80px;
+          min-width: 80px;
+          display: flex;
+          align-items: center;
+          .item-image {
+            width: 80px;
+          }
+        }
+        &__info {
+          margin-left: 16px;
+          &__name {
+            font-size: 14px;
+            margin-bottom: 8px;
+          }
+          &__price {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+
+    .content-bottom {
+      padding: 32px 16px 48px;
+      background-color: #fff;
+      margin-bottom: 1px; 
+      &__inner {
+        max-width: 343px;
+        margin: 0 auto;
+        .buy-price {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-weight: 600;
+          margin-bottom: 32px;
+          &__name {
+            font-size: 18px;
+          }
+          &__result {
+            font-size: 30px;
+          }
+        }
+        hr.partition {
+          border-top: 1px solid #efefef;
+          border-left: 0 solid #efefef;
+          border-bottom: 0 solid #efefef;
+          border-right: 0 solid #efefef;
+        }
+        .info {
+          margin: 32px 0;
+          &__title {
+            font-size: 14px;
+          }
+          .plus-icon {
+            color: #0099e8;
+          }
+          .link-btn {
+            margin-left: 4px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #0099e8;
+          }
+        }
+        .submit-btn {
+          margin-top: 24px;
+          background-color: #ea352d;
+          color: #fff;
+          width: 100%;
+          font-size: 17px;
+          height: 48px;
+          padding: 0 24px;
+          border-radius: 4px;
+          border: 1px solid transparent;
+          font-weight: 600;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

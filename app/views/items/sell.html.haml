@@ -1,45 +1,49 @@
-.sub-header
-  %img.logo{src: "/assets/material/logo/logo.png"}
-.main
+%header.sub-header
+  = image_tag '/assets/material/logo/logo.png', class: 'logo'
+%main.items-new-main
   .main__center
     .content
       .content__title
-        .content__title__name
+        %h2.content__title__name
           出品画像
-        .content__title__tag
+        %h2.content__title__tag
           必須
       .content__text
         最大10枚までアップロードできます
-      %label.label
+
+      -# 複数の写真を投稿できるようにする
+      %label.input-image-file
         %input.input-file{type: "file" ,multiple: "multiple"}
         .field-input-file
-          %img.icon-camera{src: "/assets/material/icon/icon_camera.png"}
+          = image_tag '/assets/material/icon/icon_camera.png', class: 'icon-camera'
           .field-input-file__info
             ドラッグアンドドロップ <br> またはクリックしてファイルをアップロード
 
     .content
       .content__title
-        .content__title__name
+        %h2.content__title__name
           商品名
-        .content__title__tag
+        %h2.content__title__tag
           必須
       %input.input-text{type: "text", placeholder: "40字まで"}   
       .content__title
-        .content__title__name
+        %h2.content__title__name
           商品の説明
-        .content__title__tag
+        %h2.content__title__tag
           必須
       %textarea.input-longtext{rows: "6", placeholder: "商品の説明（必須 1,000文字以内)\n（色、素材、重さ、定価、注意点など）\n\n 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
-      .count-word
+
+      -# 入力文字数を表示
+      %h4.count-word
         0/1000
 
     .content
-      .content__info
+      %h1.content__info
         商品の詳細
       .content__title
-        .content__title__name
+        %h2.content__title__name
           カテゴリー
-        .content__title__tag
+        %h2.content__title__tag
           必須
       %input.input-select{type: "search", list: "category"}
       %datalist#category
@@ -59,15 +63,15 @@
         %option(value="その他")
         %option(value="")        
       .content__title
-        .content__title__name
+        %h2.content__title__name
           ブランド
-        .content__title__tag
+        %h2.content__title__tag
           必須
       %input.input-text{type: "text", placeholder: "例）シャネル"}   
       .content__title
-        .content__title__name
+        %h2.content__title__name
           商品の状態
-        .content__title__tag
+        %h2.content__title__tag
           必須
       %input.input-select{type: "search", list: "condition"}
       %datalist#condition
@@ -76,12 +80,12 @@
         %option(value="メンズ")
 
     .content
-      .content__info
+      %h1.content__info
         配送について
       .content__title
-        .content__title__name
+        %h2.content__title__name
           配送料の負担
-        .content__title__tag
+        %h2.content__title__tag
           必須
       %input.input-select{type: "search", list: "category"}
       %datalist#category
@@ -89,9 +93,9 @@
         %option(value="レディース")
         %option(value="メンズ")      
       .content__title
-        .content__title__name
+        %h2.content__title__name
           発送元の地域
-        .content__title__tag
+        %h2.content__title__tag
           必須
       %input.input-select{type: "search", list: "category"}
       %datalist#category
@@ -99,9 +103,9 @@
         %option(value="レディース")
         %option(value="メンズ")
       .content__title
-        .content__title__name
+        %h2.content__title__name
           発送までの日数
-        .content__title__tag
+        %h2.content__title__tag
           必須
       %input.input-select{type: "search", list: "condition"}
       %datalist#condition
@@ -110,34 +114,40 @@
         %option(value="メンズ")
 
     .content
-      .content__info
+      %h1.content__info
         価格 (¥300〜9,999,999)
+
+      -# ここだけ横並びだが、クラス名は変更したくないため
       .flex
         .content__title
-          .content__title__name
+          %h2.content__title__name
             販売価格
-          .content__title__tag
+          %h2.content__title__tag
             必須
         .price
-          .price__yen
+          %p.price__yen
             ¥
           %input.input-price{type: "number"}
       .calc-box
-        .calc-box__title
+        %h3.calc-box__title
           販売手数料 (10%)
-        .calc-box__result
+        
+        -# 計算結果を表示
+        %p.calc-box__result
           555
-      %hr
+      %hr.partition
       .calc-box
-        .calc-box__title
+        %h3.calc-box__title
           販売利益
-        .calc-box__result
+        
+        -# 計算結果を表示
+        %p.calc-box__result
           666
       .btn-area
         %input.submit-btn{type: "submit", value: "出品する"}
         %input.save-btn{type: "button", value: "下書きに保存"}      
         = link_to "もどる", "#", class:"back-btn"
-      .caution
+      %h4.caution
         禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
       
   

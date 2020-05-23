@@ -1,4 +1,4 @@
-.sub-header {
+header.sub-header{
   height: 128px;
   display: flex;
   align-items: center;
@@ -10,7 +10,7 @@
   }
 }
 
-.main {
+main.items-new-main {
   width: 100%;
   margin: auto;  
   background-color: rgb(245, 245, 245);
@@ -51,7 +51,7 @@
         font-size: 14px;
       }
 
-      .label {
+      label.input-image-file {
         cursor: pointer;
         .input-file {
           display: none;
@@ -171,7 +171,7 @@
         }
       }
 
-      hr {
+      hr.partition {
         border-top: 1px solid #efefef;
         border-left: 0 solid #efefef;
         border-bottom: 0 solid #efefef;
