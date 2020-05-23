@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root 'items#usermypage'
+  root 'items#logout'
 end
