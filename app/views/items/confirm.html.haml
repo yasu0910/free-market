@@ -1,15 +1,19 @@
-%header.header
+%header.sub-header
   = image_tag '/assets/material/logo/logo.png', class: 'logo'
 
 %main.main
   .main__center-items
-    .content-head
+    %h1.content-head
       購入内容の確認
 
     .content-middle
       .item
+
+        -# 商品の画像を表示今は仮置き
         .item__image-box
-          %img.item-image{src: "/assets/material/logo/logo.png"}      
+          = image_tag '/assets/material/logo/logo.png', class: 'item-image'
+        
+        -# 商品の名前、値段を表示
         .item__info
           %p.item__info__name
             item name
@@ -19,23 +23,29 @@
     .content-bottom
       .content-bottom__inner
         .buy-price
-          %p.buy-price__name
+          %h2.buy-price__name
             支払い金額
+          
+          -# 支払い金額を表示
           %p.buy-price__result
             2500
-        %hr
+        %hr.partition
         .info
-          .info__title
+          %h3.info__title
             支払い方法
+          
+          -# 条件分岐でクレジットカードが登録されていなかったら登録ページにとぶ
           = link_to "#", class:"link-btn" do
             = icon('fas', 'plus-circle', class: "plus-icon")
             登録してください
-        %hr
+        %hr.partition
         .info
-          .info__title
+          %h3.info__title
             配達先
+
+          -# 条件分岐で配達先が登録されていなかったら登録ページにとぶ
           = link_to "#", class:"link-btn" do
             = icon('fas', 'plus-circle', class: "plus-icon")
             登録してください
-        %hr
+        %hr.partition
         %input.submit-btn{type: "submit", value: "購入する"}
