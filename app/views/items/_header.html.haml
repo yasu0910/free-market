@@ -4,13 +4,13 @@
     .header__content__main
       %h1.header__content__main__logo
         = link_to "#", class: "header__content__main__logo__link" do
-          %img{src: 'assets/material/logo/logo.png', class: "header__content__main__logo__link__img"}
+          = image_tag '/assets/material/logo/logo.png', class: "header__content__main__logo__link__img"
       .header__content__main__search-box
         %form.header__content__main__search-box__form
           %input.header__content__main__search-box__form__input{placeholder: "キーワードから探す"}
           %button.header__content__main__search-box__form__btn{type: "submit"}
             .header__content__main__search-box__form__btn__icon
-              %img{src: 'assets/material/icon/icon-search 1.png', class: "header__content__main__search-box__form__btn__icon__img"}
+              = image_tag '/assets/material/icon/icon-search 1.png', class: "header__content__main__search-box__form__btn__icon__img"
     .header__content__nav
       %ul.header__content__nav__left-list
         %li.header__content__nav__left-list__item
