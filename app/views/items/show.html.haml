@@ -1,0 +1,131 @@
+= render partial: 'header'
+
+/パンクズ機能
+%nav.bread-crumbs
+  %ul
+    %li
+      = link_to "FURIMA", "#"
+    %li
+      = icon('fa', 'angle-right')
+    %li
+      = link_to "ベビー・キッズ", "#"
+    %li
+      = icon('fa', 'angle-right')
+    %li
+      = link_to "ベビー服(男女兼用)  ~95cm", "#"
+    %li
+      = icon('fa', 'angle-right')
+    %li
+      = link_to "アウター", "#"
+    %li
+      = icon('fa', 'angle-right')
+    %li
+      %p
+        product3
+
+.main
+  .main__show
+    .main__show__content
+      .main__show__content__item-box
+        %h2.main__show__content__item-box__name
+          product3
+        .main__show__content__item-box__body
+          = image_tag '/assets/material/sample/product-sample3.png'
+          %ul
+            %li
+              = image_tag '/assets/material/sample/product-sample3.png'
+            %li
+              = image_tag '/assets/material/sample/product-sample2.png'
+            %li 
+              = image_tag '/assets/material/sample/product-sample1.png'
+        .main__show__content__item-box__price
+          %span
+            ¥30000
+          .main__show__content__item-box__price__detail
+            %span
+              (税込)
+            %span
+              送料込み
+        .main__show__content__item-box__text
+          親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+        .main__show__content__item-box__table
+          %table
+            %tbody
+              %tr
+                %th
+                  出品者
+                %td
+                  hoge
+              %tr
+                %th
+                  カテゴリー
+                %td
+                  = link_to "ベビー・キッズ","#"
+                  = link_to "ベビー服(男女兼用)  ~95cm","#"
+                  = link_to "アウター","#"
+              %tr
+                %th
+                  ブランド
+                %td
+              %tr
+                %th
+                  商品のサイズ
+                %td
+              %tr
+                %th
+                  商品の状態
+                %td
+                  未使用に近い
+              %tr
+                %th
+                  配送料の負担
+                %td
+                  送料込み（出品者負担）
+              %tr
+                %th
+                  発送元の地域
+                %td
+                  = link_to "岩手県","#"
+              %tr
+                %th
+                  発送日の目安
+                %td
+                  4-7日で発送
+        .main__show__content__item-box__optional
+          %ul.main__show__content__item-box__optional__lists
+            %li.main__show__content__item-box__optional__lists__btn.favorite-btn#favorite-btn
+              = icon('fa', 'star')
+              お気に入り 0
+            %li.main__show__content__item-box__optional__lists__btn
+              = link_to "#" do
+                = icon('fa', 'flag')
+                不適切な商品の通報
+      .main__show__content__comment-box
+        %form.main__show__content__comment-box__new-comment#new-comment
+          %textarea.main__show__content__comment-box__new-comment__text#comment-text
+          %p.main__show__content__comment-box__new-comment__notice-message
+            相手のことを考え丁寧なコメントを心がけましょう。
+            %br
+            不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %button.main__show__content__comment-box__new-comment__send-btn{:name => "button", :type => "submit"}
+            = icon('fa', 'comment')
+            コメントする
+
+    %ul.main__show__links
+      %li.main__show__links__list
+        = link_to "#" do
+          = icon('fa', 'angle-left')
+          前の商品
+      %li.main__show__links__list
+        = link_to "#" do
+          後ろの商品
+          = icon('fa', 'angle-right')
+    .main__show__related-items
+      = link_to "#" do
+        ベビー・キッズをもっと見る
+
+= render partial: 'app-banner'
+
+= render partial: 'footer'
+
+= render partial: 'purchase-btn'
