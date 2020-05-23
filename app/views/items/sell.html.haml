@@ -1,5 +1,5 @@
 %header.sub-header
-  = image_tag '/assets/material/logo/logo.png', class: 'logo'
+  = image_tag asset_path('logo.png'), class: 'logo'
 %main.items-new-main
   .main__center
     .content
@@ -15,7 +15,7 @@
       %label.input-image-file
         %input.input-file{type: "file" ,multiple: "multiple"}
         .field-input-file
-          = image_tag '/assets/material/icon/icon_camera.png', class: 'icon-camera'
+          = image_tag asset_path('icon_camera.png'), class: 'icon-camera'
           .field-input-file__info
             ドラッグアンドドロップ <br> またはクリックしてファイルをアップロード
 

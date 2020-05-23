@@ -13,9 +13,9 @@
         フリマアプリです
       .main__visual__content__btn
         = link_to "#", class: "main__visual__content__btn__apple-store-link" do
-          = image_tag '/assets/material/apple-store.svg', class: 'main__visual__content__btn__apple-store-link__img'
+          = image_tag asset_path('apple-store.svg'), class: 'main__visual__content__btn__apple-store-link__img'
         = link_to "#", class: "main__visual__content__btn__google-play-link" do
-          = image_tag '/assets/material/google-play.svg', class: 'main__visual__content__btn__google-play-link__img'
+          = image_tag asset_path('google-play.svg'), class: 'main__visual__content__btn__google-play-link__img'
   
   %section.main__introduction
     %h2.main__introduction__subtitle
@@ -25,7 +25,7 @@
         .main__introduction__lists__list__pict
           %span.main__introduction__lists__list__pict__number
             1
-          = image_tag '/assets/material/pict/pict-reason-01.jpg', class: 'main__introduction__lists__list__pict__img'
+          = image_tag asset_path('pict-reason-01.jpg'), class: 'main__introduction__lists__list__pict__img'
         %h3.main__introduction__lists__list__text
           %span
             3分
@@ -36,7 +36,7 @@
         .main__introduction__lists__list__pict
           %span.main__introduction__lists__list__pict__number
             2
-          = image_tag '/assets/material/pict/pict-reason-02.jpg', class: 'main__introduction__lists__list__pict__img'
+          = image_tag asset_path('pict-reason-02.jpg'), class: 'main__introduction__lists__list__pict__img'
         %h3.main__introduction__lists__list__text
           %span
             シンプル
@@ -47,7 +47,7 @@
         .main__introduction__lists__list__pict
           %span.main__introduction__lists__list__pict__number
             3
-          = image_tag '/assets/material/pict/pict-reason-03.jpg', class: 'main__introduction__lists__list__pict__img'
+          = image_tag asset_path('pict-reason-03.jpg'), class: 'main__introduction__lists__list__pict__img'
         %h3.main__introduction__lists__list__text
           手数料
           %span
@@ -67,28 +67,28 @@
         ほしかったあの商品に出会えるかもしれません。
       .main__middle-dl__inner__btn
         = link_to "#", class: "main__middle-dl__inner__btn__apple-store-link" do
-          = image_tag '/assets/material/apple-store.svg', class: 'main__middle-dl__inner__btn__apple-store-link__img'
+          = image_tag asset_path('apple-store.svg'), class: 'main__middle-dl__inner__btn__apple-store-link__img'
         = link_to "#", class: "main__middle-dl__inner__btn__google-play-link" do
-          = image_tag '/assets/material/google-play.svg', class: 'main__middle-dl__inner__btn__google-play-link__img'
+          = image_tag asset_path('google-play.svg'), class: 'main__middle-dl__inner__btn__google-play-link__img'
 
   %section.main__key-features
     %h2.main__key-features__subtitle
       FURIMAの特徴
     .main__key-features__items
       %section.main__key-features__items__item
-        = image_tag '/assets/material/icon/icon-01.png', class: 'main__key-features__items__item__img'
+        = image_tag asset_path('icon-01.png'), class: 'main__key-features__items__item__img'
         %h3.main__key-features__items__item__subtitle
           簡単に売り買いできる
         %p.main__key-features__items__item__detail
           スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
       %section.main__key-features__items__item
-        = image_tag '/assets/material/icon/icon-03.png', class: 'main__key-features__items__item__img'
+        = image_tag asset_path('icon-03.png'), class: 'main__key-features__items__item__img'
         %h3.main__key-features__items__item__subtitle
           売上金は即日振込みに対応
         %p.main__key-features__items__item__detail
           午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
       %section.main__key-features__items__item
-        = image_tag '/assets/material/icon/icon-04.png', class: 'main__key-features__items__item__img'
+        = image_tag asset_path('icon-04.png'), class: 'main__key-features__items__item__img'
         %h3.main__key-features__items__item__subtitle
           様々な支払いに対応
         %p.main__key-features__items__item__detail
@@ -105,7 +105,7 @@
       .main__pickup__product__lists
         .main__pickup__product__lists__list
           = link_to "#", class: "main__pickup__product__lists__list__link" do
-            = image_tag '/assets/material/sample/product-sample3.png', class: 'main__pickup__product__lists__list__link__img'
+            = image_tag asset_path('product-sample3.png'), class: 'main__pickup__product__lists__list__link__img'
             .main__pickup__product__lists__list__link__body
               %h3.main__pickup__product__lists__list__link__body__name
                 product3
@@ -121,7 +121,7 @@
         
         .main__pickup__product__lists__list
           = link_to "#", class: "main__pickup__product__lists__list__link" do
-            = image_tag '/assets/material/sample/product-sample2.png', class: 'main__pickup__product__lists__list__link__img'
+            = image_tag asset_path('product-sample2.png'), class: 'main__pickup__product__lists__list__link__img'
             .main__pickup__product__lists__list__link__body
               %h3.main__pickup__product__lists__list__link__body__name
                 product2
@@ -137,7 +137,7 @@
 
         .main__pickup__product__lists__list
           = link_to "#", class: "main__pickup__product__lists__list__link" do
-            = image_tag '/assets/material/sample/product-sample1.png', class: 'main__pickup__product__lists__list__link__img'
+            = image_tag asset_path('product-sample1.png'), class: 'main__pickup__product__lists__list__link__img'
             .main__pickup__product__lists__list__link__body
               %h3.main__pickup__product__lists__list__link__body__name
                 product1
@@ -162,7 +162,7 @@
       .main__pickup__product__lists
         .main__pickup__product__lists__list
           = link_to "#", class: "main__pickup__product__lists__list__link" do
-            = image_tag '/assets/material/sample/product-sample3.png', class: 'main__pickup__product__lists__list__link__img'
+            = image_tag asset_path('product-sample3.png'), class: 'main__pickup__product__lists__list__link__img'
             .main__pickup__product__lists__list__link__body
               %h3.main__pickup__product__lists__list__link__body__name
                 product3
@@ -178,7 +178,7 @@
         
         .main__pickup__product__lists__list
           = link_to "#", class: "main__pickup__product__lists__list__link" do
-            = image_tag '/assets/material/sample/product-sample2.png', class: 'main__pickup__product__lists__list__link__img'
+            = image_tag asset_path('product-sample2.png'), class: 'main__pickup__product__lists__list__link__img'
             .main__pickup__product__lists__list__link__body
               %h3.main__pickup__product__lists__list__link__body__name
                 product2
@@ -194,7 +194,7 @@
 
         .main__pickup__product__lists__list
           = link_to "#", class: "main__pickup__product__lists__list__link" do
-            = image_tag '/assets/material/sample/product-sample1.png', class: 'main__pickup__product__lists__list__link__img'
+            = image_tag asset_path('product-sample1.png'), class: 'main__pickup__product__lists__list__link__img'
             .main__pickup__product__lists__list__link__body
               %h3.main__pickup__product__lists__list__link__body__name
                 product1

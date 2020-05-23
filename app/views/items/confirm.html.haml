@@ -1,5 +1,5 @@
 %header.sub-header
-  = image_tag '/assets/material/logo/logo.png', class: 'logo'
+  = image_tag asset_path('logo.png'), class: 'logo'
 
 %main.main
   .main__center-items
@@ -11,7 +11,7 @@
 
         -# 商品の画像を表示今は仮置き
         .item__image-box
-          = image_tag '/assets/material/logo/logo.png', class: 'item-image'
+          = image_tag asset_path('logo.png'), class: 'item-image'
         
         -# 商品の名前、値段を表示
         .item__info
