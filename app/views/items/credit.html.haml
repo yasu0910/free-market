@@ -1,0 +1,68 @@
+%header.sub-header
+  = image_tag asset_path('logo.png'), class: 'logo'
+%main.credits-new-main
+  .main__center
+
+    %h1.content-head
+      クレジットカード情報入力
+
+    .content-main
+      .content
+        .content__title
+          %h2.content__title__name
+            カード番号
+          %h2.content__title__tag
+            必須
+        %input.input-text{type: "text", placeholder: "半角数字のみ"}   
+      
+        .content__title
+          %h2.content__title__name
+            有効期限
+          %h2.content__title__tag
+            必須
+        .date
+          .select-date
+            %input.input-select-half{type: "select", list: "month"}
+            %datalist#month
+              %option(value="01")
+              %option(value="02")
+              %option(value="03")
+              %option(value="04")
+              %option(value="05")
+              %option(value="06")
+              %option(value="07")
+              %option(value="08")
+              %option(value="09")
+              %option(value="10")
+              %option(value="11")
+              %option(value="12")
+            月
+          .select-date
+            %input.input-select-half{type: "select", list: "year"}
+            %datalist#year
+              %option(value="20")
+              %option(value="21")
+              %option(value="22")
+              %option(value="23")
+              %option(value="24")
+              %option(value="25")
+              %option(value="26")
+              %option(value="27")
+              %option(value="28")
+              %option(value="29")
+              %option(value="30")
+            年
+
+        .content__title
+          %h2.content__title__name
+            商品の状態
+          %h2.content__title__tag
+            必須
+        %input.input-text{type: "text", placeholder: "カード背面4桁もしくは3桁の数字"}
+        .link-help 
+          = link_to "#", class:"link-btn" do
+            = icon('fas', 'question-circle', class: "question-icon")
+            カード裏面の番号とは？
+        %input.submit-btn{type: "submit", value: "登録する"}
+
+        

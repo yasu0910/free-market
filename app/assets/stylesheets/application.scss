@@ -1,21 +1,21 @@
 @import 'reset';
+@import 'setting';
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 @import 'items';
 @import 'signup';
 @import 'signin';
 @import 'userdata';
+@import 'user-my-page';
+@import 'logout';
+@import 'header';
+@import 'main';
+@import 'footer';
+@import 'purchase-btn';
+@import 'sell';
+@import 'confirm';
+@import 'app-banner';
+@import 'credit';
+@import 'bread-crumbs';
+@import 'show';
 
-
-* {
-  box-sizing: border-box;
-}
-
-@mixin app_main_color() {
-  background-color: #3CCACE;
-}
-
-@mixin font_property($color: #fff, $fSize: 16px) {
-  color: $color;
-  font-size: $fSize;
-} 

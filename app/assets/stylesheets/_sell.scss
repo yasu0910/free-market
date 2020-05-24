@@ -1,0 +1,191 @@
+
+header.sub-header{
+  height: 128px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(245, 245, 245);
+  .logo {
+    height: 49px;
+    width: 185px;
+  }
+}
+
+main.items-new-main {
+  width: 100%;
+  margin: auto;  
+  background-color: rgb(245, 245, 245);
+  .main__center{
+    max-width: 700px;
+    margin: auto;
+    .content {
+      background-color: #fff;
+      padding: 40px;
+      margin-bottom: 1px;
+      &__info {
+        color: rgb(136, 136, 136);
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 24px;
+      }
+      @include mandatory-field();
+    
+      &__text {
+        margin-top: 16px;
+        font-size: 14px;
+      }
+
+      label.input-image-file {
+        cursor: pointer;
+        .input-file {
+          display: none;
+        }
+        .field-input-file {
+          margin-top: 16px;
+          height: 160px;
+          background-color: rgb(245, 245, 245);
+          border-width: 1px;
+          border-style: dashed;
+          border-color: rgb(204, 204, 204);
+          display: flex;
+          align-items: center;
+          align-content: center;
+          justify-content: center;
+          flex-direction: column;
+          padding: 0 4px;
+          line-height: 16.8px;         
+          .icon-camera {
+            height: 24px;
+            margin-bottom: 8px;
+            width: 24px;
+          }
+          &__info {
+            font-size: 12px;
+            text-align: center;
+          }
+        }
+      }
+  
+      .input-text {
+        @include input-text-field();
+        margin-top: 16px;
+        margin-bottom: 32px;
+      }
+
+      .input-longtext {
+        margin-top: 16px;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        color: #222;
+        font-size: 16px;
+        outline: none;
+        padding: 13px 16px;
+        resize: vertical;
+        vertical-align: middle;
+      }
+
+      .count-word {
+        margin-top: 16px;
+        text-align: right;
+        color: #888;
+        font-size: 12px;
+      }
+
+      .input-select {
+        margin: 16px 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        color: #222;
+        font-size: 16px;
+        height: 48px;
+        line-height: 1;
+        padding: 0 56px 0 16px;
+        width: 100%;
+      }
+
+      option {
+        display: block;
+        white-space: pre;
+        min-height: 1.2em;
+        padding: 0px 2px 1px;
+      }
+
+      .flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 16px 0;
+        .price {
+          display: flex;
+          align-items: center;
+          &__yen {
+            font-size: 14px;
+            margin-right: 8px;
+          }
+          .input-price {
+            max-width: 285px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            height: 48px;
+            padding: 0 16px;
+            font-size: 16px;
+            text-align: right;
+          }
+        }
+      }
+
+      .calc-box {
+        padding: 12px 0px;
+        display: flex;
+        align-items: center;
+        height: 46px;
+        justify-content: space-between;
+        &__title {
+          font-size: 14px;
+        }
+        &__result {
+          font-size: 14px;
+        }
+      }
+
+      @include partition-border();
+
+      .btn-area {
+        width: 360px;
+        margin: 0px auto 32px;       
+        .submit-btn {
+          margin-top: 24px;
+          @include submit-btn();
+        }
+        .save-btn {
+          margin-top: 24px;
+          background-color: #cccccc;
+          color: #222222;
+          width: 100%;
+          font-size: 17px;
+          min-height: 48px;
+          padding: 0 24px;
+          border-radius: 4px;
+          border: 1px solid transparent;
+          font-weight: 600;
+          text-align: center;        
+        }  
+        .back-btn {
+          height: 20px;
+          font-size: 14px;
+          display: block;
+          margin-top: 24px;
+          text-align: center;
+          text-decoration: none;
+        }
+      }
+
+      .caution {
+        font-size: 12px;
+      }     
+    }
+  }
+}
