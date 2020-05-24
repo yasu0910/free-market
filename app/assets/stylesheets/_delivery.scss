@@ -1,0 +1,120 @@
+main.delivery-info-main{
+  width: 100%;
+  margin: auto;  
+  background-color: rgb(245, 245, 245);
+
+  .my-container {
+    margin: 0 auto;
+    width: 1020px;
+    display: flex;
+    padding: 40px 0;
+
+    .my-side {
+      float: left;
+      width: 280px;
+      margin: 0 40px 0 0;
+      &__navigation {
+        &__list {
+          list-style: none;
+          color: #333;
+          li {
+            border-top: 1px solid #eee;
+          }
+          .active {
+            background: #eee;
+            font-weight: 600;
+          }
+          &__item {
+            display: block;
+            min-height: 48px;
+            padding: 16px;
+            background: #fff;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+            display: flex;
+            position: relative;
+            &__icon {
+              position: absolute;
+              right: 16px;
+            }
+          }
+        }
+        &__head {
+          margin: 40px 0 0;
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .main__center {
+      width: 700px;
+      .content-head{
+        padding: 8px 24px;
+        font-size: 24px;
+        text-align: center;
+        background-color: #fff;
+        margin-bottom: 1px;    
+      }
+      .content-main {
+        background-color: #fff;
+        padding: 64px;
+        .content {
+          &__title {
+            margin-top: 40px;
+            margin-bottom: 8px;
+          }
+          margin: 0 auto;
+          &__text {
+            font-size: 14px;
+          }
+          &__link {
+            text-align: right;
+            margin-top: 8px;
+            .link-btn {
+              margin-left: 4px;
+              font-size: 14px;
+              text-decoration: none;
+              color: #0099e8;
+              .angle-right-icon {
+                color: #0099e8;
+              }
+            }
+          }  
+          @include optional-item();         
+          .input-text {
+            @include input-text-field();
+          }
+          .input-select {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #222;
+            font-size: 16px;
+            height: 48px;
+            line-height: 1;
+            padding: 0 56px 0 16px;
+            width: 100%;
+          }         
+          .link-help {
+            text-align: right;
+            .link-btn {
+              margin-left: 4px;
+              font-size: 14px;
+              text-decoration: none;
+              color: #0099e8;
+              .question-icon {
+                color: #0099e8;
+              }
+            }
+          }
+          .submit-btn {
+            margin: 40px 0;
+            @include submit-btn();
+          }
+        }
+      }
+    }
+  }
+}

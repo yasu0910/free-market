@@ -1,5 +1,4 @@
-%header.sub-header
-  = image_tag asset_path('logo.png'), class: 'logo'
+= render partial: 'sub-header'
 
 %main.main
   .main__center-items
@@ -49,3 +48,5 @@
             登録してください
         %hr.partition
         %input.submit-btn{type: "submit", value: "購入する"}
+
+= render partial: 'sub-footer'

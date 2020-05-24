@@ -47,6 +47,28 @@
   }
 }
 
+// 入力任意項目、任意マーク
+@mixin optional-item() {
+  &__title {
+    display: flex;
+    &__name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    &__tag-optional {
+      margin-left: 8px;
+      font-size: 12px;
+      padding: 0 4px;
+      color: rgb(255, 255, 255);
+      background: rgb(204, 204, 204);
+      border-radius: 2px;
+      display: inline-block;
+      font-weight: 600;
+      text-align: center;
+    }
+  }
+}
+
 // テキスト（文字、数字）入力欄 text型
 @mixin input-text-field() {
   border: 1px solid #ccc;
@@ -57,7 +79,7 @@
 }
 
 // 送信ボタン メインカラー
-@mixin submit-btn {
+@mixin submit-btn() {
   @include app_main_background-color();
   color: #fff;
   width: 100%;
