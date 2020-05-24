@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  root 'items#user-my-page'
+
+  root 'items#confirm'
+
 end

@@ -1,3 +1,4 @@
+
 header.sub-header{
   height: 128px;
   display: flex;
@@ -27,25 +28,8 @@ main.items-new-main {
         font-weight: 600;
         margin-bottom: 24px;
       }
-      &__title {
-        display: flex;
-        // margin-bottom: 16px;
-        &__name {
-          font-size: 14px;
-          font-weight: 600;
-        }
-        &__tag {
-          margin-left: 8px;
-          font-size: 12px;
-          padding: 0 4px;
-          background-color: #ff0211;
-          color: #fff;
-          border-radius: 2px;
-          display: inline-block;
-          font-weight: 600;
-          text-align: center;
-        }
-      }
+      @include mandatory-field();
+    
       &__text {
         margin-top: 16px;
         font-size: 14px;
@@ -83,11 +67,7 @@ main.items-new-main {
       }
   
       .input-text {
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        height: 48px;
-        padding: 0 16px;
-        width: 100%;
+        @include input-text-field();
         margin-top: 16px;
         margin-bottom: 32px;
       }
@@ -171,28 +151,14 @@ main.items-new-main {
         }
       }
 
-      hr.partition {
-        border-top: 1px solid #efefef;
-        border-left: 0 solid #efefef;
-        border-bottom: 0 solid #efefef;
-        border-right: 0 solid #efefef;
-      }
+      @include partition-border();
 
       .btn-area {
         width: 360px;
         margin: 0px auto 32px;       
         .submit-btn {
           margin-top: 24px;
-          background-color: #ea352d;
-          color: #fff;
-          width: 100%;
-          font-size: 17px;
-          height: 48px;
-          padding: 0 24px;
-          border-radius: 4px;
-          border: 1px solid transparent;
-          font-weight: 600;
-          text-align: center;
+          @include submit-btn();
         }
         .save-btn {
           margin-top: 24px;
