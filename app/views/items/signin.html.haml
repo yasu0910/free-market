@@ -2,7 +2,7 @@
 .sub-header
   .sub-header__content
     %h1.sub-header__content__logo
-      %img.sub-header__content__logo__image{src: 'assets/material/logo/logo.png'}
+      = image_tag asset_path('logo.png'), class: "sub-header__content__logo__image"
 
 %main.items__new__main
   -# ログイン画面
@@ -50,7 +50,7 @@
           %a{ :href => '#', :id => 'tokutei' }
             特定商取引に関する規約
       .sub-footer__content__logo
-        %img.sub-footer__content__logo__image{src: 'assets/material/logo/logo.png'}
+        = image_tag asset_path('logo.png'), class: "sub-footer__content__logo__image"
       %p
         %small
           FURIMA,Inc.
