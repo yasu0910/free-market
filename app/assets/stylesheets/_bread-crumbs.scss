@@ -1,0 +1,42 @@
+.bread-crumbs {
+  width: 100%;
+  height: 55px;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  ul {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    li {
+      padding: 0 10px 0 0;
+      a {
+        text-decoration: none;
+        color: #333;
+        font-weight: lighter;
+        font-size: 13px;
+      }
+      .fa-angle-right {
+        display: inline-block;
+      }
+      .fa-angle-right:before {
+        content: "\f105";
+      } 
+      p {
+        font-size: 13px;
+        font-weight: bold;
+      }
+    }
+    
+  }
+}
+.main {
+  &__show {
+    padding: 40px;
+    margin: 0 auto;
+  }
+
+}

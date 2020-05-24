@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
 
-  root 'items#credit'
+  root 'items#confirm'
 
 end
