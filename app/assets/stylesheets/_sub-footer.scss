@@ -1,0 +1,36 @@
+.sub {
+  background-color: whitesmoke;
+  .sub-footer {
+    width: 456px;
+    height: 220px;
+    margin: 0 auto;
+    padding: 10px 0;
+    &__content {
+      ul {
+       display: flex; 
+       justify-content: space-around;
+       margin-top: 20px;
+        li {
+          a {
+            text-decoration: none;
+            color: darkgray;
+            font-size: 12px;
+          }
+        }
+      }
+      &__logo {
+        text-align: center;
+        padding-top: 30px;
+        &__image {
+          height: 50px;
+          width: 130px;
+          margin-right: 20px;
+        }
+      }
+      p {
+        background-color: whitesmoke;
+        text-align: center;
+      }
+    }
+  }
+}

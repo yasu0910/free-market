@@ -1,0 +1,21 @@
+-# トップページのフッター　
+%footer.sub
+  .sub-footer
+    .sub-footer__content
+      %ul
+        %li<
+          = link_to "#", id: "privacy" do
+            プライバシーポリシー
+        %li<
+          = link_to "#", id: "tos" do
+            FURIMA利用規約
+        %li<
+          = link_to "#", id: "tokutei" do
+            特定商取引に関する規約
+      .sub-footer__content__logo
+        = image_tag asset_path('logo.png'), class: "sub-footer__content__logo__image"
+      %p
+        %small
+          FURIMA,Inc.
+
+          

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
-  root 'items#confirm'
+  root 'items#userdata'
 
 end
