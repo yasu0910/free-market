@@ -1,5 +1,5 @@
-%header.sub-header
-  = image_tag asset_path('logo.png'), class: 'logo'
+= render partial: 'sub-header'
+
 %main.credits-new-main
   .main__center
 
@@ -65,4 +65,4 @@
             カード裏面の番号とは？
         %input.submit-btn{type: "submit", value: "登録する"}
 
-        
+= render partial: 'sub-footer'
