@@ -29,6 +29,7 @@ main.items-new-main {
         margin-bottom: 24px;
       }
       @include mandatory-field();
+      @include optional-item();
     
       &__text {
         margin-top: 16px;
