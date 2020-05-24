@@ -1,0 +1,271 @@
+.sub-header {
+  background-color: whitesmoke;
+  height: 128px;
+  &__content {
+    &__logo {
+      text-align: center;
+      line-height: 128px;
+      padding-right: 20px;
+      padding-top: 30px;
+      &__image {
+        height: 50px;
+        width: 185px;
+      }
+    }
+  }
+}
+
+.items__new__main {
+  background-color: whitesmoke;
+  .userdata {
+    background-color: #fff;
+    width: 700px;
+    margin: 0 auto;
+    &__title {
+      font-size: 20px;
+      &__logo {
+        text-align: center;
+        font-weight: bold;
+        padding: 30px;
+        border-bottom: 1px solid whitesmoke;
+      }
+      &__content {
+        padding: 40px 40px 64px;
+        &__inner {
+          max-width: 343px;
+          margin: 0 auto;
+          &__nickname {
+            font-size: 14px;
+            font-weight: bold;
+          }
+          .nickname {
+            margin: 8px 0 0;
+            width: 350px;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          &__email {
+            margin-top: 24px;
+            font-size: 14px;
+            font-weight: bold;
+          }
+          .email {
+            margin: 8px 0 0;
+            width: 350px;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          &__password {
+            margin-top: 24px;
+            font-size: 14px;
+            font-weight: bold;
+          }
+          .password {
+            margin: 8px 0 0;
+            width: 350px;
+            height: 48px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          &__text{
+            color: #888888;
+            font-size: 14px;
+            margin: 8px 0 0;
+            &__check {
+              margin-top: 10px;
+              color: #333333;
+              font-size: 14px;
+            }
+          }
+          &__chapter {
+            margin-top: 32px;
+            &__logo {
+              font-size: 16px;
+              font-weight: bold;
+            }
+            &__text {
+              margin-top: 10px;
+              font-size: 14px;
+              color: #333333;
+            }
+          }
+          &__name {
+            margin-top: 32px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: bold;
+          }
+          .firstname {
+            height: 48px;
+            width: 165px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          .lastname {
+            height: 48px;
+            width: 165px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          &__hurigana {
+            margin-top: 32px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: bold;
+          }
+          .firstname-hurigana {
+            height: 48px;
+            width: 165px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          .lastname-hurigana {
+            height: 48px;
+            width: 165px;
+            padding: 10px 16px 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            background: #fff;
+            line-height: 1.5;
+            font-size: 16px;
+          }
+          &__birthday {
+            margin-top: 32px;
+            font-size: 14px;
+            font-weight: bold;
+            &__select {
+              display: flex;
+              justify-content: center;
+              margin-top: 10px;
+              &__year {
+                .year {
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  height: 48px;
+                  width: 76px;
+                }
+              }
+              &__month {
+                .month {
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  height: 48px;
+                  width: 76px;
+                }
+              }
+              &__day {
+                .day {
+                  border: 1px solid #ccc;
+                  border-radius: 4px;
+                  height: 48px;
+                  width: 76px;
+                }
+              }
+            }
+          }
+          &__info {
+            margin: 8px 0 0;
+            &__text {
+              margin-top: 10px;
+              color: #888888;
+              font-size: 14px;
+            }
+          }
+          &__agree {
+            margin-top: 32px;
+            &__text {
+              font-size: 14px;
+            }
+          }
+          .submit {
+            width: 343px;
+            height: 50px;
+            background-color: #3CCACE;
+            color: #fff;
+            margin-top: 24px;
+            border-radius: 4px;
+          }
+          &__explanation {
+            margin: 24px 0 0;
+            text-align: right;
+            &__text {
+              font-size: 14px;
+              color: #0099e8;
+            }
+          }
+          &__privacy {
+            margin: 24px 0 0;
+            background-color: #fff;
+            padding: 8px 16px;
+            &__text {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.sub {
+  background-color: whitesmoke;
+  .sub-footer {
+    width: 456px;
+    height: 220px;
+    margin: 0 auto;
+    padding: 10px 0;
+    &__content{
+      ul {
+       display: flex; 
+       justify-content: space-around;
+       margin-top: 20px;
+        li {
+          a {
+            text-decoration: none;
+            color: darkgray;
+            font-size: 12px;
+          }
+        }
+      }
+      &__logo {
+        text-align: center;
+        padding-top: 30px;
+        &__image {
+          height: 50px;
+          width: 130px;
+        }
+      }
+      p {
+        background-color: whitesmoke;
+        text-align: center;
+      }
+    }
+  }
+}

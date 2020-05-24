@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root 'items#signin'
+  root 'items#userdata'
 end
