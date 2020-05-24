@@ -62,12 +62,7 @@
             font-size: 30px;
           }
         }
-        hr.partition {
-          border-top: 1px solid #efefef;
-          border-left: 0 solid #efefef;
-          border-bottom: 0 solid #efefef;
-          border-right: 0 solid #efefef;
-        }
+        @include partition-border();
         .info {
           margin: 32px 0;
           &__title {
