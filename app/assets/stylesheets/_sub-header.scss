@@ -1,0 +1,16 @@
+.sub-header {
+  background-color: whitesmoke;
+  height: 128px;
+  &__content {
+    &__logo {
+      text-align: center;
+      line-height: 128px;
+      padding-right: 20px;
+      padding-top: 30px;
+      &__image {
+        height: 50px;
+        width: 185px;
+      }
+    }
+  }
+}

@@ -1,8 +1,4 @@
--# FURIMAのロゴ
-.sub-header
-  .sub-header__content
-    %h1.sub-header__content__logo
-      = image_tag asset_path('logo.png'), class: "sub-header__content__logo__image"
+= render partial: 'sub-header'
 
 %main.items__new__main.small
   -# 登録ボタン
@@ -20,22 +16,4 @@
         = icon('fab', 'google')
         Googleで登録
 
--# トップページのフッター　
-%footer.sub
-  .sub-footer
-    .sub-footer__content
-      %ul
-        %li<
-          %a{ :href => '#', :id => 'privacy' }
-            プライバシーポリシー
-        %li<
-          %a{ :href => '#', :id => 'tos' }
-            FURIMA利用規約
-        %li<
-          %a{ :href => '#', :id => 'tokutei' }
-            特定商取引に関する規約
-      .sub-footer__content__logo
-        = image_tag asset_path('logo.png'), class: "sub-footer__content__logo__image"
-      %p
-        %small
-          FURIMA,Inc.
+= render partial: 'sub-footer'
