@@ -1,3 +1,6 @@
+= render partial: 'header'
+
+
 .logout-page
   .logout-page__conteiner
     .my-side
@@ -134,3 +137,10 @@
           .main-box__logout-box__content__box
             %li.main-box__logout-box__content__box__btn
               = link_to 'ログアウト', '#'
+
+
+= render partial: 'app-banner'
+
+= render partial: 'footer'
+
+= render partial: 'purchase-btn'

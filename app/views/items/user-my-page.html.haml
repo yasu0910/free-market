@@ -1,3 +1,6 @@
+= render partial: 'header'
+
+
 .main
   .my-container
     .my-side
@@ -127,7 +130,7 @@
       .mypage-content
         = link_to '#', class: 'content-link' do
           %figure
-            %img.icon{src: 'assets/material/icon/member_photo_noimage_thumb.png'}
+            = image_tag asset_path('member_photo_noimage_thumb.png'), class: "icon"
           %h2.test-name テスト フリマ
           .mypage-content-number
             .evaluation
@@ -151,7 +154,7 @@
             %li.tab-box__item
               = link_to '#', class: 'tab-box__item__link' do
                 .tab-box__item__icon
-                  %img.icon{src: 'assets/material/icon/icon_brand.png'}
+                  = image_tag asset_path('icon_brand.png'), class: "icon"
                 .tab-box__item__link__body
                   .tab-box__item__link__body__text
                     《この通知を受け取ったあなた限定》「500ポイントバック」のクーポンをプレゼントしました！
@@ -161,7 +164,7 @@
               = icon('fas', 'angle-right', class: 'arrow')
             %li.tab-box__item
               = link_to '#', class: 'tab-box__item__link' do
-                %img.icon{src: 'assets/material/icon/icon_brand.png'}
+                = image_tag asset_path('icon_brand.png'), class: "icon"
                 .tab-box__item__link__body
                   .tab-box__item__link__body__text
                     事務局から個別メッセージ「ログイン通知」
@@ -187,3 +190,9 @@
           %ul{id: 'tab-box-during-trading', class: 'tab-box'} 
             %li.during-trading
               取引中の商品がありません
+
+= render partial: 'app-banner'
+
+= render partial: 'footer'
+
+= render partial: 'purchase-btn'
