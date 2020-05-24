@@ -1,0 +1,87 @@
+
+.items__new__main {
+  background-color: whitesmoke;
+  .login {
+    background-color: #fff;
+    width: 700px;
+    margin: 0 auto;
+    &__menu {
+      padding: 40px 64px;
+      color:#000;
+      font-size: 15px;
+      text-align: center;
+       border-bottom: 1px solid whitesmoke;
+    }
+  
+    &__inner {
+      padding: 24px 16px 40px;
+    }
+    .btn {
+      display: block;
+      border-radius: 4px;
+      height: 50px;
+      width :350px;
+      margin:0 auto 20px;
+      color:#fff;
+      text-decoration: none;
+      text-align: center;
+      line-height: 50px;
+    }
+    .email {
+      background-color: #0099e8;
+    }
+    .facebook {
+      background-color: #385185;
+    }
+    .google {
+      background-color: #fff;
+      color: black;
+      border:#979797 solid 1px;
+    }
+    &__new {
+      &__content {
+        padding: 40px 40px 64px;
+        &__mail {
+          text-align: center;
+          .mail {
+            width: 350px;
+            height: 50px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            padding: 10px 16px 8px;
+          }
+        }
+        &__password {
+          text-align: center;
+          .password {
+            width: 350px;
+            height: 50px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            padding: 10px 16px 8px;
+          }
+        }
+        &__submit {
+          text-align: center;
+          .submit {
+            width: 350px;
+            height: 50px;
+            background-color: #3CCACE;
+            color: #fff;
+            margin-top: 20px;
+            border-radius: 4px;
+          }
+        }
+        &__forget {
+          width: 350px;
+          margin: 0 auto;
+          .forget {
+            display: block;
+            margin: 40px 0 0;
+          }
+        }
+      }
+    }
+  }
+}

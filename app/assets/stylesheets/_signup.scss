@@ -1,0 +1,44 @@
+
+.items__new__main.small {
+  background-color: whitesmoke;
+  height: calc(100vh - 220px - 128px);
+  .contents {
+    background-color: #fff;
+    width: 700px;
+    margin: 0 auto;
+    &__menu {
+      padding: 40px;
+      color:#000;
+      font-size: 21px;
+      font-weight: bold;
+      text-align: center;
+      border-bottom: 1px solid #f5f5f5;
+    }
+    &__btns{
+      padding: 24px 16px 40px;
+    }
+    .btns {
+      display: block;
+      border-radius: 4px;
+      height: 50px;
+      width :343px;
+      margin:0 auto 20px;
+      color:#fff;
+      text-decoration: none;
+      text-align: center;
+      line-height: 50px;
+      
+    }
+    .mail {
+      background-color: #3CCACE;
+    }
+    .facebook {
+      background-color: #385185;
+    }
+    .google {
+      background-color: #fff;
+      color: black;
+      border:#979797 solid 1px;
+    }
+  }
+}

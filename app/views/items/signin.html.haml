@@ -1,0 +1,33 @@
+= render partial: 'sub-header'
+
+%main.items__new__main
+  -# ログイン画面
+  .login
+    .login__menu
+      アカウントをお持ちでない方はこちら
+      = link_to "#", class: "btn email" do
+        新規会員登録
+
+    -# 既に登録している人のボタン
+    .login__inner
+      = link_to "#", class: "btn facebook" do
+        = icon('fab', 'facebook-square')
+        Facebookで登録
+      = link_to "#", class: "btn google" do
+        = icon('fab', 'google')
+        Googleで登録
+
+    -# アドレス・パスワード記入欄
+    .login__new
+      %form.login__new__content
+        .login__new__content__mail
+          %input{type: "text", class: "mail",placeholder: "メールアドレス"}
+        .login__new__content__password
+          %input{type: "text", class: "password",placeholder: "パスワード"}
+        .login__new__content__submit
+          %input{type: "submit", class: "submit", value: "ログイン"}
+        .login__new__content__forget
+          = link_to "#", class: "forget" do
+            パスワードをお忘れの方
+
+= render partial: 'sub-footer'
