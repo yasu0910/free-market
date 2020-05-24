@@ -1,0 +1,12 @@
+/appバナー
+%aside.app-banner
+  .app-banner__inner
+    .app-banner__inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    .app-banner__inner__text
+      今すぐ無料ダウンロード！
+    .app-banner__inner__icon
+      = link_to "#", class: "app-banner__inner__icon__apple-store-link" do
+        = image_tag asset_path('apple-store.svg'), class: "app-banner__inner__icon__apple-store-link__img"
+      = link_to "#", class: "app-banner__inner__icon__google-play-link" do
+        = image_tag asset_path('google-play.svg'), class: "app-banner__inner__icon__google-play-link__img"
