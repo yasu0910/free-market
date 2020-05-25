@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'items#index'
+  root 'items#credit'
+  # resources :credit, only[:index, new]
 
 end

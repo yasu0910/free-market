@@ -77,7 +77,7 @@ Things you may want to cover:
 ## categorysテーブル
 |Column|Type|Options|
 |------|----|-------|
-|category_name|string|null: false|
+|name|string|null: false|
 |ancestry|string|
 ### Association
 - has_many :items
@@ -87,7 +87,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |item_id|references|null: false, foreign_key: true|
-|image_url|string|null: false|
+|url|string|null: false|
 ### Association
 - belongs_to :item
 
@@ -95,8 +95,8 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|null: false, foreign_key: true|
-|credit_card_number|integer|null: false|
+|number|integer|null: false|
 |expiration_date|date|null: false|
-|credit_card_security_code|integer|null: false|
+|security_code|integer|null: false|
 ### Association
 - belongs_to :user
