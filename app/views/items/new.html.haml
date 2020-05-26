@@ -2,152 +2,139 @@
 
 %main.items-new-main
   .main__center
-    .content
-      .content__title
-        %h2.content__title__name
-          出品画像
-        %h2.content__title__tag
-          必須
-      .content__text
-        最大10枚までアップロードできます
-
-      -# 複数の写真を投稿できるようにする
-      %label.input-image-file
-        %input.input-file{type: "file" ,multiple: "multiple"}
-        .field-input-file
-          = image_tag asset_path('icon_camera.png'), class: 'icon-camera'
-          .field-input-file__info
-            ドラッグアンドドロップ <br> またはクリックしてファイルをアップロード
-
-    .content
-      .content__title
-        %h2.content__title__name
-          商品名
-        %h2.content__title__tag
-          必須
-      %input.input-text{type: "text", placeholder: "40字まで"}   
-      .content__title
-        %h2.content__title__name
-          商品の説明
-        %h2.content__title__tag
-          必須
-      %textarea.input-longtext{rows: "6", placeholder: "商品の説明（必須 1,000文字以内)\n（色、素材、重さ、定価、注意点など）\n\n 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"}
-
-      -# 入力文字数を表示
-      %h4.count-word
-        0/1000
-
-    .content
-      %h1.content__info
-        商品の詳細
-      .content__title
-        %h2.content__title__name
-          カテゴリー
-        %h2.content__title__tag
-          必須
-      %input.input-select{type: "search", list: "category"}
-      %datalist#category
-        %option(value="選択してください")
-        %option(value="レディース")
-        %option(value="メンズ")
-        %option(value="ベビー・キッズ")
-        %option(value="インテリア・住まい・小物")
-        %option(value="本・音楽・ゲーム")
-        %option(value="おもちゃ・ホビー・グッズ")
-        %option(value="コスメ・香水・美容")
-        %option(value="家電・スマホ・カメラ")
-        %option(value="スポーツ・レジャー")
-        %option(value="ハンドメイド")
-        %option(value="チケット")
-        %option(value="自転車・オートバイ")
-        %option(value="その他")
-        %option(value="")        
-      .content__title
-        %h2.content__title__name
-          ブランド
-        %h2.content__title__tag-optional
-          任意
-      %input.input-text{type: "text", placeholder: "例）シャネル"}   
-      .content__title
-        %h2.content__title__name
-          商品の状態
-        %h2.content__title__tag
-          必須
-      %input.input-select{type: "search", list: "condition"}
-      %datalist#condition
-        %option(value="選択してください")
-        %option(value="レディース")
-        %option(value="メンズ")
-
-    .content
-      %h1.content__info
-        配送について
-      .content__title
-        %h2.content__title__name
-          配送料の負担
-        %h2.content__title__tag
-          必須
-      %input.input-select{type: "search", list: "category"}
-      %datalist#category
-        %option(value="選択してください")
-        %option(value="レディース")
-        %option(value="メンズ")      
-      .content__title
-        %h2.content__title__name
-          発送元の地域
-        %h2.content__title__tag
-          必須
-      %input.input-select{type: "search", list: "category"}
-      %datalist#category
-        %option(value="選択してください")
-        %option(value="レディース")
-        %option(value="メンズ")
-      .content__title
-        %h2.content__title__name
-          発送までの日数
-        %h2.content__title__tag
-          必須
-      %input.input-select{type: "search", list: "condition"}
-      %datalist#condition
-        %option(value="選択してください")
-        %option(value="レディース")
-        %option(value="メンズ")
-
-    .content
-      %h1.content__info
-        価格 (¥300〜9,999,999)
-
-      -# ここだけ横並びだが、クラス名は変更したくないため
-      .flex
+    = form_for @item do |form|      
+      .content
         .content__title
           %h2.content__title__name
-            販売価格
+            出品画像
           %h2.content__title__tag
             必須
-        .price
-          %p.price__yen
-            ¥
-          %input.input-price{type: "number"}
-      .calc-box
-        %h3.calc-box__title
-          販売手数料 (10%)
-        
-        -# 計算結果を表示
-        %p.calc-box__result
-          555
-      %hr.partition
-      .calc-box
-        %h3.calc-box__title
-          販売利益
-        
-        -# 計算結果を表示
-        %p.calc-box__result
-          666
-      .btn-area
-        %input.submit-btn{type: "submit", value: "出品する"}
-        %input.save-btn{type: "button", value: "下書きに保存"}      
-        = link_to "もどる", "#", class:"back-btn"
-      %h4.caution
-        禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+        .content__text
+          最大10枚までアップロードできます
+        = form.fields_for :images do |i|
+          = i.label :url, class: "input-file" do
+            = image_tag asset_path('icon_camera.png'), class: 'icon-camera'
+            %p.input-file__info
+              ドラッグアンドドロップ <br> またはクリックしてファイルをアップロード
+            = i.file_field :url, class: "input-file__hidden"
+
+      .content
+        .content__title
+          %h2.content__title__name
+            商品名
+          %h2.content__title__tag
+            必須
+        = form.text_field :name, class: "input-text", placeholder: "40字まで"
+        .content__title
+          %h2.content__title__name
+            商品の説明
+          %h2.content__title__tag
+            必須
+        = form.text_area :content, rows: "6", class: "input-longtext", placeholder: "商品の説明（必須 1,000文字以内)\n（色、素材、重さ、定価、注意点など）\n\n 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+
+        -# jsで入力文字数を表示
+        %h4.count-word
+          0/1000
+
+      .content
+        %h1.content__info
+          商品の詳細
+        .content__title
+          %h2.content__title__name
+            カテゴリー
+          %h2.content__title__tag
+            必須
+
+        -# カテゴリー作成後ancestryに変更
+        -# %input.input-select{type: "search", list: "category"}
+        -# %datalist#category
+        -#   %option(value="選択してください")
+        -#   %option(value="レディース")
+        -#   %option(value="メンズ")
+        -#   %option(value="ベビー・キッズ")
+        -#   %option(value="インテリア・住まい・小物")
+        -#   %option(value="本・音楽・ゲーム")
+        -#   %option(value="おもちゃ・ホビー・グッズ")
+        -#   %option(value="コスメ・香水・美容")
+        -#   %option(value="家電・スマホ・カメラ")
+        -#   %option(value="スポーツ・レジャー")
+        -#   %option(value="ハンドメイド")
+        -#   %option(value="チケット")
+        -#   %option(value="自転車・オートバイ")
+        -#   %option(value="その他")
+        -#   %option(value="")        
+        .content__title
+          %h2.content__title__name
+            ブランド
+          %h2.content__title__tag-optional
+            任意
+        = form.text_field :brand, class: "input-text", placeholder: "例）シャネル"
+        .content__title
+          %h2.content__title__name
+            商品の状態
+          %h2.content__title__tag
+            必須
+        = form.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3 ] ,["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態状態が悪い", 6] ], { include_blank: "選択してください", selected:"" }, class: "input-select"       
+
+      .content
+        %h1.content__info
+          配送について
+        .content__title
+          %h2.content__title__name
+            配送料の負担
+          %h2.content__title__tag
+            必須
+        = form.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], { include_blank: "選択してください", selected:"" }, class: "input-select"       
+  
+        .content__title
+          %h2.content__title__name
+            発送元の地域
+          %h2.content__title__tag
+            必須
+        = form.collection_select :prefecture_id, Prefecture.all, :id, :name, { include_blank: "選択してください", selected:"" }, class: "input-select"
+  
+        .content__title
+          %h2.content__title__name
+            発送までの日数
+          %h2.content__title__tag
+            必須
+        = form.select :shipping_days, [ ["1〜2日で発送",1], ["2〜3日で発送", 2], ["4〜7日で発送", 3]], { include_blank: "選択してください", selected:"" }, class: "input-select"    
+
+      .content
+        %h1.content__info
+          価格 (¥300〜9,999,999)
+
+        -# ここだけ横並びにしたいが、クラス名は変更したくないため
+        .flex
+          .content__title
+            %h2.content__title__name
+              販売価格
+            %h2.content__title__tag
+              必須
+          .price
+            %p.price__yen
+              ¥
+            = form.number_field :price, class: "input-price", placeholder: "0", min: 300, max: 9999999
+        .calc-box
+          %h3.calc-box__title
+            販売手数料 (10%)
+          
+          -# jsで計算結果を表示
+          %p.calc-box__result
+            -
+        %hr.partition
+        .calc-box
+          %h3.calc-box__title
+            販売利益
+          
+          -# jsで計算結果を表示
+          %p.calc-box__result
+            -
+        .btn-area
+          = form.submit "出品する", class: "submit-btn"
+          = form.submit "下書きに保存", class: "save-btn"
+          = link_to "もどる", "#", class:"back-btn"
+        %h4.caution
+          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
 
 = render partial: 'sub-footer'
