@@ -22,36 +22,37 @@ main.items-new-main {
         font-size: 14px;
       }
 
-      label.input-image-file {
-        cursor: pointer;
-        .input-file {
+      
+      
+      .input-file {
+        width: 100%;
+        margin-top: 16px;
+        height: 160px;
+        background-color: rgb(245, 245, 245);
+        border-width: 1px;
+        border-style: dashed;
+        border-color: rgb(204, 204, 204);
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 0 4px;
+        line-height: 16.8px;         
+        .icon-camera {
+          height: 24px;
+          margin-bottom: 8px;
+          width: 24px;
+        }
+        &__info {
+          font-size: 12px;
+          text-align: center;
+        }
+        &__hidden {
           display: none;
         }
-        .field-input-file {
-          margin-top: 16px;
-          height: 160px;
-          background-color: rgb(245, 245, 245);
-          border-width: 1px;
-          border-style: dashed;
-          border-color: rgb(204, 204, 204);
-          display: flex;
-          align-items: center;
-          align-content: center;
-          justify-content: center;
-          flex-direction: column;
-          padding: 0 4px;
-          line-height: 16.8px;         
-          .icon-camera {
-            height: 24px;
-            margin-bottom: 8px;
-            width: 24px;
-          }
-          &__info {
-            font-size: 12px;
-            text-align: center;
-          }
-        }
       }
+      
   
       .input-text {
         @include input-text-field();
@@ -113,7 +114,7 @@ main.items-new-main {
             margin-right: 8px;
           }
           .input-price {
-            max-width: 285px;
+            width: 285px;
             border: 1px solid #ccc;
             border-radius: 4px;
             height: 48px;
