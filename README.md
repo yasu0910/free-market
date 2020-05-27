@@ -91,12 +91,11 @@ Things you may want to cover:
 ### Association
 - belongs_to :item
 
-## creditsテーブル
+## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
-|number|integer|null: false|
-|expiration_date|date|null: false|
-|security_code|integer|null: false|
+|customer_id|string|null: false|
+|card_id|string|null: false|
 ### Association
 - belongs_to :user
