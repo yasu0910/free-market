@@ -95,7 +95,7 @@ Things you may want to cover:
 ## creditsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
+|user_id|references|foreign_key: true|
 |number|integer|null: false|
 |expiration_date|date|null: false|
 |security_code|integer|null: false|
