@@ -8,4 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # 仮置き
+  resources :items, except: :show
+
 end
