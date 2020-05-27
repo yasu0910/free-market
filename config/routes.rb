@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  resources :items, only: [:index, :new, :create]
+  # 仮置き
+  resources :items, except: :show
 
 end

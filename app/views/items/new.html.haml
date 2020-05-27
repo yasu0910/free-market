@@ -2,7 +2,7 @@
 
 %main.items-new-main
   .main__center
-    = form_for @item do |form|      
+    = form_for [@item] do |form|      
       .content
         .content__title
           %h2.content__title__name
@@ -11,12 +11,22 @@
             必須
         .content__text
           最大10枚までアップロードできます
-        = form.fields_for :images do |i|
-          = i.label :url, class: "input-file" do
-            = image_tag asset_path('icon_camera.png'), class: 'icon-camera'
-            %p.input-file__info
-              ドラッグアンドドロップ <br> またはクリックしてファイルをアップロード
-            = i.file_field :url, class: "input-file__hidden"
+
+        -# 最後にscssを当てる際に使用
+        -# = form.fields_for :images do |i|
+        -#   = i.label :url, class: "input-file" do
+        -#     = image_tag asset_path('icon_camera.png'), class: 'icon-camera'
+        -#     %p.input-file__info
+        -#       ドラッグアンドドロップ <br> またはクリックしてファイルをアップロード
+        -#     = i.file_field :url, class: "input-file__hidden"
+
+        -# クラス名は全て仮置き
+        #image-box
+          = form.fields_for :images do |image|
+            .js-file_group{"data-index" => "#{image.index}"}
+              = image.file_field :url, class: "js-file"
+              %br
+              %span.js-remove 削除
 
       .content
         .content__title
