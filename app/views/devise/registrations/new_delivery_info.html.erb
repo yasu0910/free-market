@@ -1,0 +1,66 @@
+<h2>住所情報登録</h2>
+
+<%= form_for @delivery_info, url:delivery_info_path do |f| %>
+  <%= render "devise/shared/error_messages", resource: @delivery_info %>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_hurigana %><br />
+    <%= f.text_field :first_name_hurigana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name_hurigana %><br />
+    <%= f.text_field :last_name_hurigana %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postal_code %><br />
+    <%= f.text_field :postal_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= f.label :street %><br />
+    <%= f.text_field :street %>
+  </div>
+
+  <div class="field">
+    <%= f.label :building_name %><br />
+    <%= f.text_field :building_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :room_number %><br />
+    <%= f.text_field :room_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.telephone_field :phone_number %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
