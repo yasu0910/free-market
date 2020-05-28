@@ -93,25 +93,29 @@
             font-size: 14px;
             font-weight: bold;
           }
-          .firstname {
-            height: 48px;
-            width: 165px;
-            padding: 10px 16px 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background: #fff;
-            line-height: 1.5;
-            font-size: 16px;
-          }
-          .lastname {
-            height: 48px;
-            width: 165px;
-            padding: 10px 16px 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background: #fff;
-            line-height: 1.5;
-            font-size: 16px;
+          &__name-boxes {
+            display: flex;
+            justify-content: space-between;
+            .firstname {
+              height: 48px;
+              width: calc(50% - 2px);
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+            }
+            .lastname {
+              height: 48px;
+              width: calc(50% - 2px);
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+            }
           }
           &__hurigana {
             margin-top: 32px;
@@ -119,25 +123,29 @@
             font-size: 14px;
             font-weight: bold;
           }
-          .firstname-hurigana {
-            height: 48px;
-            width: 165px;
-            padding: 10px 16px 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background: #fff;
-            line-height: 1.5;
-            font-size: 16px;
-          }
-          .lastname-hurigana {
-            height: 48px;
-            width: 165px;
-            padding: 10px 16px 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background: #fff;
-            line-height: 1.5;
-            font-size: 16px;
+          &__hurigana-boxes {
+            display: flex;
+            justify-content: space-between;
+            .firstname-hurigana {
+              height: 48px;
+              width: calc(50% - 2px);
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+            }
+            .lastname-hurigana {
+              height: 48px;
+              width: calc(50% - 2px);
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #ccc;
+              background: #fff;
+              line-height: 1.5;
+              font-size: 16px;
+            }
           }
           &__birthday {
             margin-top: 32px;
@@ -148,23 +156,7 @@
               justify-content: center;
               margin-top: 10px;
               &__year {
-                .year {
-                  border: 1px solid #ccc;
-                  border-radius: 4px;
-                  height: 48px;
-                  width: 76px;
-                }
-              }
-              &__month {
-                .month {
-                  border: 1px solid #ccc;
-                  border-radius: 4px;
-                  height: 48px;
-                  width: 76px;
-                }
-              }
-              &__day {
-                .day {
+                .year,.month,.day {
                   border: 1px solid #ccc;
                   border-radius: 4px;
                   height: 48px;
