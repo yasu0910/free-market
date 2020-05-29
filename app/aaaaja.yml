@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+    attributes:
+      user:
+        nickname: ニックネーム
+        first_name: 姓
+        last_name: 名
+        first_name_hurigana: 姓カナ
+        last_name_hurigana: 名カナ
+        birthday: 生年月日
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+      delivery_info:
+        first_name: 姓
+        last_name: 名
+        first_name_hurigana: 姓カナ
+        last_name_hurigana: 名カナ
+        postal_code: 郵便番号
+        state: 都道府県
+        city: 市区町村
+        street: 番地
