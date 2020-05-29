@@ -6,10 +6,8 @@ class ItemsController < ApplicationController
     @item = Item.new
     @item.images.build
     
-    @category_parent_array = ["選択してください"]
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
+    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+    @category_parent_array.unshift("選択してください")
   end
 
   def create
