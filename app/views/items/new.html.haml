@@ -49,30 +49,17 @@
       .content
         %h1.content__info
           商品の詳細
-        .content__title
-          %h2.content__title__name
-            カテゴリー
-          %h2.content__title__tag
-            必須
-
-        -# カテゴリー作成後ancestryに変更
-        -# %input.input-select{type: "search", list: "category"}
-        -# %datalist#category
-        -#   %option(value="選択してください")
-        -#   %option(value="レディース")
-        -#   %option(value="メンズ")
-        -#   %option(value="ベビー・キッズ")
-        -#   %option(value="インテリア・住まい・小物")
-        -#   %option(value="本・音楽・ゲーム")
-        -#   %option(value="おもちゃ・ホビー・グッズ")
-        -#   %option(value="コスメ・香水・美容")
-        -#   %option(value="家電・スマホ・カメラ")
-        -#   %option(value="スポーツ・レジャー")
-        -#   %option(value="ハンドメイド")
-        -#   %option(value="チケット")
-        -#   %option(value="自転車・オートバイ")
-        -#   %option(value="その他")
-        -#   %option(value="")        
+        
+        -# カテゴリー機能
+        .create-category
+          .create-category__form
+            %a.create-category__form__name
+              カテゴリー
+            %a.create-category__form__tag
+              必須
+            .create-category__form__select
+              .create-category__form__select__box
+                = form.select :category_id, @category_parent_array, {}, {class: 'create-category__form__select__box__btn', id: 'parent_category'}
         .content__title
           %h2.content__title__name
             ブランド
