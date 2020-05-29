@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        first_name: 姓
+        last_name: 名
+        first_name_hurigana: 姓カナ
+        last_name_hurigana: 名カナ
+        birthday: 生年月日
+        email: メールアドレス
+        password: パスワード
+        encrypted_password: パスワード
+      delivery_info:
+        first_name: 姓
+        last_name: 名
+        first_name_hurigana: 姓カナ
+        last_name_hurigana: 名カナ
+        postal_code: 郵便番号
+        state: 都道府県
+        city: 市区町村
+        street: 番地
