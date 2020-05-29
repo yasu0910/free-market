@@ -1,4 +1,8 @@
 
+.field_with_errors {
+  display: contents;
+}
+
 .items__new__main {
   background-color: whitesmoke;
   .userdata {
@@ -163,6 +167,22 @@
                   width: 76px;
                 }
               }
+              // &__month {
+              //   .month {
+              //     border: 1px solid #ccc;
+              //     border-radius: 4px;
+              //     height: 48px;
+              //     width: 76px;
+              //   }
+              // }
+              // &__day {
+              //   .day {
+              //     border: 1px solid #ccc;
+              //     border-radius: 4px;
+              //     height: 48px;
+              //     width: 76px;
+              //   }
+              // }
             }
           }
           &__info {
