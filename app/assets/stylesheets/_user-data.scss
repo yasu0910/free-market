@@ -31,6 +31,7 @@
           max-width: 343px;
           margin: 0 auto;
           &__nickname {
+            @include mandatory-field();
             font-size: 14px;
             font-weight: bold;
           }
@@ -46,6 +47,7 @@
             font-size: 16px;
           }
           &__email {
+            @include mandatory-field();
             margin-top: 24px;
             font-size: 14px;
             font-weight: bold;
@@ -62,6 +64,7 @@
             font-size: 16px;
           }
           &__password {
+            @include mandatory-field();
             margin-top: 24px;
             font-size: 14px;
             font-weight: bold;
@@ -89,6 +92,7 @@
           }
           &__chapter {
             margin-top: 32px;
+            @include mandatory-field();
             &__logo {
               font-size: 16px;
               font-weight: bold;
@@ -100,6 +104,7 @@
             }
           }
           &__name {
+            @include mandatory-field();
             margin-top: 32px;
             margin-bottom: 10px;
             font-size: 14px;
@@ -133,6 +138,7 @@
             }
           }
           &__hurigana {
+            @include mandatory-field();
             margin-top: 32px;
             margin-bottom: 10px;
             font-size: 14px;
@@ -166,6 +172,7 @@
             }
           }
           &__birthday {
+            @include mandatory-field();
             margin-top: 32px;
             font-size: 14px;
             font-weight: bold;
