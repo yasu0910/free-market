@@ -15,7 +15,7 @@ $(document).on('turbolinks:load', function() {
                       <img data-index="${index}" width="118" height="118" class="image" src="${url}">
                     </div>
                     <div class="image-preview__btn">
-                      <label for="item_images_attributes_${index}_url">編集</label>
+                      <label for="item_images_attributes_${index}_url" class="image-edit">編集</label>
                       <span class="image-remove">削除</span>
                     </div>
                   </div>`;
@@ -35,7 +35,7 @@ $(document).on('turbolinks:load', function() {
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
   lastIndex = $('.select-image:last').data('index');
   fileIndex.splice(0, lastIndex);
-  
+
   $('.hidden-destroy').hide();
   
   $('.uplord-image-files-field').on('change', '.input-image', function(e) {
@@ -77,4 +77,18 @@ $(document).on('turbolinks:load', function() {
     // 画像入力欄が0個にならないように
     if ($('.input-image').length == 0) $('.uplord-image-files-field').append(buildFileField(fileIndex[0]));
   });
+
+  $('.input-longtext').keyup(function(){
+    var count = $(this).val().length;
+    $('.count-word__num').text(count);
+  });
+
+  $('.input-price').on('input', function(){
+    var num = $(this).val();
+    var fee = Math.floor(num / 10);
+    var plofit = num - fee;
+    $('.fee').text(`¥${fee}`);
+    $('.plofit').text(`¥${plofit}`);    
+  });
+
 });

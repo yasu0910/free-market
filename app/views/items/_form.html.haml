@@ -18,7 +18,7 @@
                   .image-preview__image-box
                     = image_tag image.url.url, data: { index: i }, width: "118", height: '118', class: 'image'
                   .image-preview__btn
-                    %label{ for: "item_images_attributes_#{i}_url" }
+                    %label{ for: "item_images_attributes_#{i}_url", class: "image-edit" }
                       編集
                     %span.image-remove 削除
 
@@ -63,7 +63,8 @@
 
         -# jsで入力文字数を表示
         %h4.count-word
-          0/1000
+          %span.count-word__num 0
+          \/1000
 
       .content
         %h1.content__info
@@ -147,22 +148,24 @@
             = form.number_field :price, class: "input-price", placeholder: "0", min: 300, max: 9999999
         .calc-box
           %h3.calc-box__title
-            販売手数料 (10%)
-          
+            販売手数料 (10%)         
           -# jsで計算結果を表示
-          %p.calc-box__result
-            -
+          %p.calc-box__result.fee
+            
         %hr.partition
         .calc-box
           %h3.calc-box__title
-            販売利益
-          
+            販売利益          
           -# jsで計算結果を表示
-          %p.calc-box__result
-            -
+          %p.calc-box__result.plofit
+            
         .btn-area
-          = form.submit "出品する", class: "submit-btn"
+          - if @item.persisted?
+            = form.submit "編集を保存する", class: "submit-btn"
+          - else
+            = form.submit "出品する", class: "submit-btn"
+
           = form.submit "下書きに保存", class: "save-btn"
-          = link_to "もどる", "#", class:"back-btn"
+          = link_to "もどる", root_path, class:"back-btn"
         %h4.caution
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
