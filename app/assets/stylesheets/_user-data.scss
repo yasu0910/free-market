@@ -1,3 +1,15 @@
+.field_with_errors {
+  display: contents;
+}
+.field_with_errors input,
+.field_with_errors select{
+  outline: 0;
+  border-color: red !important;
+}
+.errors{
+  font-size: 14px;
+  color: red;
+}
 
 .items__new__main {
   background-color: whitesmoke;
@@ -19,6 +31,7 @@
           max-width: 343px;
           margin: 0 auto;
           &__nickname {
+            @include mandatory-field();
             font-size: 14px;
             font-weight: bold;
           }
@@ -34,6 +47,7 @@
             font-size: 16px;
           }
           &__email {
+            @include mandatory-field();
             margin-top: 24px;
             font-size: 14px;
             font-weight: bold;
@@ -50,6 +64,7 @@
             font-size: 16px;
           }
           &__password {
+            @include mandatory-field();
             margin-top: 24px;
             font-size: 14px;
             font-weight: bold;
@@ -77,6 +92,7 @@
           }
           &__chapter {
             margin-top: 32px;
+            @include mandatory-field();
             &__logo {
               font-size: 16px;
               font-weight: bold;
@@ -88,83 +104,83 @@
             }
           }
           &__name {
+            @include mandatory-field();
             margin-top: 32px;
             margin-bottom: 10px;
             font-size: 14px;
             font-weight: bold;
           }
-          .firstname {
-            height: 48px;
-            width: 165px;
-            padding: 10px 16px 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background: #fff;
-            line-height: 1.5;
-            font-size: 16px;
-          }
-          .lastname {
-            height: 48px;
-            width: 165px;
-            padding: 10px 16px 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background: #fff;
-            line-height: 1.5;
-            font-size: 16px;
+          &__name-boxes {
+            display: flex;
+            justify-content: space-between;
+            &__words {
+              width: calc(50% - 2px);
+              .firstname {
+                height: 48px;
+                width: 100%;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: #fff;
+                line-height: 1.5;
+                font-size: 16px;
+              }
+              .lastname {
+                height: 48px;
+                width: 100%;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: #fff;
+                line-height: 1.5;
+                font-size: 16px;
+              }
+            }
           }
           &__hurigana {
+            @include mandatory-field();
             margin-top: 32px;
             margin-bottom: 10px;
             font-size: 14px;
             font-weight: bold;
           }
-          .firstname-hurigana {
-            height: 48px;
-            width: 165px;
-            padding: 10px 16px 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background: #fff;
-            line-height: 1.5;
-            font-size: 16px;
-          }
-          .lastname-hurigana {
-            height: 48px;
-            width: 165px;
-            padding: 10px 16px 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background: #fff;
-            line-height: 1.5;
-            font-size: 16px;
+          &__hurigana-boxes {
+            display: flex;
+            justify-content: space-between;
+            &__words {
+              width: calc(50% - 2px);
+              .firstname-hurigana {
+                height: 48px;
+                width: 100%;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: #fff;
+                line-height: 1.5;
+                font-size: 16px;
+              }
+              .lastname-hurigana {
+                height: 48px;
+                width: 100%;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: #fff;
+                line-height: 1.5;
+                font-size: 16px;
+              }
+            }
           }
           &__birthday {
+            @include mandatory-field();
             margin-top: 32px;
             font-size: 14px;
             font-weight: bold;
             &__select {
               display: flex;
-              justify-content: center;
               margin-top: 10px;
               &__year {
-                .year {
-                  border: 1px solid #ccc;
-                  border-radius: 4px;
-                  height: 48px;
-                  width: 76px;
-                }
-              }
-              &__month {
-                .month {
-                  border: 1px solid #ccc;
-                  border-radius: 4px;
-                  height: 48px;
-                  width: 76px;
-                }
-              }
-              &__day {
-                .day {
+                .year,.month,.day {
                   border: 1px solid #ccc;
                   border-radius: 4px;
                   height: 48px;

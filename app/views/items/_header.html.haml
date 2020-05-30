@@ -18,7 +18,13 @@
         %li.header__content__nav__left-list__item
           = link_to "ブランド", "#", class: "header__content__nav__left-list__item__link" 
       %ul.header__content__nav__right-list
-        %li.header__content__nav__right-list__item
-          = link_to "ログイン", "#", class: "header__content__nav__right-list__item__link" 
-        %li.header__content__nav__right-list__item
-          = link_to "新規会員登録", "#", class: "header__content__nav__right-list__item__link"
+        - if user_signed_in?
+          %li.header__content__nav__right-list__item
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__content__nav__right-list__item__link" 
+          %li.header__content__nav__right-list__item
+            = link_to "マイページ", "#", class: "header__content__nav__right-list__item__link" 
+        - else
+          %li.header__content__nav__right-list__item
+            = link_to "ログイン", new_user_session_path, class: "header__content__nav__right-list__item__link" 
+          %li.header__content__nav__right-list__item
+            = link_to "新規会員登録", signup_path, class: "header__content__nav__right-list__item__link"

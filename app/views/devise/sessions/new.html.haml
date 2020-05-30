@@ -1,4 +1,10 @@
-= render partial: 'sub-header'
+
+
+
+
+
+
+= render partial: 'items/sub-header'
 
 %main.items__new__main
   -# ログイン画面
@@ -19,15 +25,17 @@
 
     -# アドレス・パスワード記入欄
     .login__new
-      %form.login__new__content
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login__new__content"}) do |f|
+        - flash.each do |name, msg|
+          = content_tag :div, msg, id: "flash_#{name}"
         .login__new__content__mail
-          %input{type: "text", class: "mail",placeholder: "メールアドレス"}
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "mail"
         .login__new__content__password
-          %input{type: "text", class: "password",placeholder: "パスワード"}
+          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "password"
         .login__new__content__submit
-          %input{type: "submit", class: "submit", value: "ログイン"}
+          = f.submit "ログイン", class: "submit"
         .login__new__content__forget
           = link_to "#", class: "forget" do
             パスワードをお忘れの方
 
-= render partial: 'sub-footer'
+= render partial: 'items/sub-footer'

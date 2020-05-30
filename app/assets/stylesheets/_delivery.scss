@@ -1,71 +1,88 @@
+.field_with_errors {
+  display: contents;
+}
+.field_with_errors input,
+.field_with_errors select{
+  outline: 0;
+  border-color: red !important;
+}
+.errors{
+  font-size: 14px;
+  margin-top: 3px;
+  color: red;
+}
+
 main.delivery-info-main{
   width: 100%;
   margin: auto;  
   background-color: rgb(245, 245, 245);
+    // ※コメントアウトしている場所はサイドバーの部分です。
 
   .my-container {
     margin: 0 auto;
     width: 1020px;
-    display: flex;
+    // display: flex;
     padding: 40px 0;
 
-    .my-side {
-      float: left;
-      width: 280px;
-      margin: 0 40px 0 0;
-      &__navigation {
-        &__list {
-          list-style: none;
-          color: #333;
-          li {
-            border-top: 1px solid #eee;
-          }
-          .active {
-            background: #eee;
-            font-weight: 600;
-          }
-          &__item {
-            display: block;
-            min-height: 48px;
-            padding: 16px;
-            background: #fff;
-            font-size: 14px;
-            color: #333;
-            text-decoration: none;
-            display: flex;
-            position: relative;
-            &__icon {
-              position: absolute;
-              right: 16px;
-            }
-          }
-        }
-        &__head {
-          margin: 40px 0 0;
-          font-size: 16px;
-          font-weight: bold;
-        }
-      }
-    }
+    // .my-side {
+    //   float: left;
+    //   width: 280px;
+    // margin: 0 40px 0 0;
+    //   &__navigation {
+    //     &__list {
+    //       list-style: none;
+    //       color: #333;
+    //       li {
+    //         border-top: 1px solid #eee;
+    //       }
+    //       .active {
+    //         background: #eee;
+    //         font-weight: 600;
+    //       }
+    //       &__item {
+    //         display: block;
+    //         min-height: 48px;
+    //         padding: 16px;
+    //         background: #fff;
+    //         font-size: 14px;
+    //         color: #333;
+    //         text-decoration: none;
+    //         display: flex;
+    //         position: relative;
+    //         &__icon {
+    //           position: absolute;
+    //           right: 16px;
+    //         }
+    //       }
+    //     }
+    //     &__head {
+    //       margin: 40px 0 0;
+    //       font-size: 16px;
+    //       font-weight: bold;
+    //     }
+    //   }
+    // }
 
     .main__center {
       width: 700px;
+      margin: 0 auto;
       .content-head{
-        padding: 8px 24px;
+        padding: 30px;
         font-size: 24px;
         text-align: center;
         background-color: #fff;
-        margin-bottom: 1px;    
+        font-weight: bold;
+        border-bottom: 1px solid whitesmoke;
       }
       .content-main {
         background-color: #fff;
-        padding: 64px;
+        padding: 40px 40px 64px;
         .content {
-          &__title {
-            margin-top: 40px;
-            margin-bottom: 8px;
-          }
+          max-width: 500px;
           margin: 0 auto;
+          &__title {
+            margin-top: 8px;
+          }
           &__text {
             font-size: 14px;
           }
@@ -82,9 +99,11 @@ main.delivery-info-main{
               }
             }
           }  
-          @include optional-item();         
+          @include optional-item();
+          @include mandatory-field();         
           .input-text {
             @include input-text-field();
+            margin-top: 10px;
           }
           .input-select {
             background-color: #fff;
