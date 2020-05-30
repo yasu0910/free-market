@@ -1,81 +1,80 @@
 $(document).on('turbolinks:load', function() {
-  // 画像用のinputを生成する関数
+  // fields_forのfile_field 一つを作る（押せないボタン）
   const buildFileField = (index)=> {
-    const html = `<div data-index="${index}" class="js-file_group">
-                    <input class="js-file" type="file"
+    const html = `<div data-index="${index}" class="select-image">
+                    <input class="input-image" type="file"
                     name="item[images_attributes][${index}][url]"
-                    id="item_images_attributes_${index}_url"><br>
-                    <div class="js-remove">削除</div>
+                    id="item_images_attributes_${index}_url">
                   </div>`;
     return html;
   }
-
-  // file_fieldのnameに動的なindexをつける為の配列
-  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-  console.log('fileIndex;',fileIndex);
-
-  // 既に使われているindexを除外
-  lastIndex = $('.js-file_group:last').data('index');
-  console.log('lastIndex;',lastIndex);
-
-  // 配列の一番先頭からlastIndexまで削除
-  fileIndex.splice(0, lastIndex);
-  console.log('fileIndex after splice;',fileIndex);
-  
-
-  $('.hidden-destroy').hide();
-  // プレビュー用のimgタグを生成する関数
-  const buildImg = (index, url)=> {
-    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
-    console.log('buildImg html;',html);
+  // プレビュー表示用の画像とその編集、削除を作る
+  const buildFileImage = (index, url)=> {
+    const html = `<div class="image-preview" data-index="${index}">
+                    <div class="image-preview__image-box">
+                      <img data-index="${index}" width="118" height="118" class="image" src="${url}">
+                    </div>
+                    <div class="image-preview__btn">
+                      <label for="item_images_attributes_${index}_url">編集</label>
+                      <span class="image-remove">削除</span>
+                    </div>
+                  </div>`;
+    return html;
+  }
+  // fields_forのfile_fieldをクリックできるボタンを作る
+  const buildLabel = (count, index)=> {
+    const html = `<label class="add-btn" data-count="${count}" for="item_images_attributes_${index}_url">
+                    <div class="label-box">
+                      <img class="icon-camera" src="/assets/icon_camera-24c5a3dec3f777b383180b053077a49d0416a4137a1c541d7dd3f5ce93194dee.png">
+                      <p class="upload-info">クリックして画像をアップロード</p>
+                    </div>
+                  </label>`;
     return html;
   }
 
-  $('#image-box').on('change', '.js-file', function(e) {
+  let fileIndex = [1,2,3,4,5,6,7,8,9,10];
+  lastIndex = $('.select-image:last').data('index');
+  fileIndex.splice(0, lastIndex);
+  
+  $('.hidden-destroy').hide();
+  
+  $('.uplord-image-files-field').on('change', '.input-image', function(e) {
+    // 目標の要素のdata-inadex
     const targetIndex = $(this).parent().data('index');
-    console.log('image-box change targetIndex;',targetIndex);
-
-    // ファイルのブラウザ上でのURLを取得する
+    // URLの取得
     const file = e.target.files[0];
-    console.log('image-box change file;',file);
-
     const blobUrl = window.URL.createObjectURL(file);
-    console.log('image-box change blobUrl;',blobUrl);
 
-    // 該当indexを持つimgタグがあれば取得して変数imgに入れる(画像変更の処理)
+    // 画像変更
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-      console.log('image-box if 変更 targetIndex;',targetIndex);
-      console.log('image-box if 変更 img setAttribute before;',img);
-
       img.setAttribute('src', blobUrl);
-      console.log('image-box if 変更 img setAttribute after;',img);
-
-      // 新規画像追加の処理
-    } else {  
-
-      console.log('image-box else 新規');
-      $('#previews').append(buildImg(targetIndex, blobUrl));
-      console.log('image-box else 新規 append(buildImg(targetIndex, blobUrl))');
-      // fileIndexの先頭の数字を使ってinputを作る
-      $('#image-box').append(buildFileField(fileIndex[0]));
+    // 新規画像追加
+    } else { 
+      // 写真たちの追加（見える部分の追加）
+      $('.image-previews').append(buildFileImage(targetIndex, blobUrl));
+      // ボタンを常に一つにするために消す
+      $('.add-btn:last').remove();
+      // file_fieldの追加（見えない部分の追加）
+      $('.uplord-image-files-field').append(buildFileField(fileIndex[0]));
+      // ボタンの追加
+      var count = $(".image-preview").length;
+      $('.image-previews').append(buildLabel(count, fileIndex[0]));
       fileIndex.shift();
-      // 末尾の数に1足した数を追加する
+      // 末尾の数に1足した数を追加
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
     }
   });
 
-  $('#image-box').on('click', '.js-remove', function() {
-    const targetIndex = $(this).parent().data('index')
-    // 該当indexを振られているチェックボックスを取得する
+  // 画像削除
+  $('.uplord-image-files-field').on('click', '.image-remove', function() {
+    const targetIndex = $(this).parent().parent().data('index')
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
-    // もしチェックボックスが存在すればチェックを入れる
     if (hiddenCheck) hiddenCheck.prop('checked', true);
-    
-    $(this).parent().remove();
-    $(`img[data-index="${targetIndex}"]`).remove();
-
-    // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
-    
+    $(`.select-image[data-index="${targetIndex}"]`).remove();
+    $(`.image-preview[data-index="${targetIndex}"]`).remove();
+    var count = $(".image-preview").length;
+    $('.add-btn:last').attr('data-count', `${count}`); 
+    // 画像入力欄が0個にならないように
+    if ($('.input-image').length == 0) $('.uplord-image-files-field').append(buildFileField(fileIndex[0]));
   });
 });

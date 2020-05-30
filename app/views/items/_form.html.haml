@@ -10,43 +10,41 @@
         .content__text
           最大10枚までアップロードできます
 
-        -# 最後にscssを当てる際に使用
-        -# = form.fields_for :images do |i|
-        -#   = i.label :url, class: "input-file" do
-        -#     = image_tag asset_path('icon_camera.png'), class: 'icon-camera'
-        -#     %p.input-file__info
-        -#       ドラッグアンドドロップ <br> またはクリックしてファイルをアップロード
-        -#     = i.file_field :url, class: "input-file__hidden"
-
-        -# クラス名は全て仮置き
-        -# <div id="previews">
-        -#   <% if @product.persisted? %>
-        -#     <% @product.images.each_with_index do |image, i| %>
-        -#       <%= image_tag image.src.url, data: { index: i }, width: "100", height: '100' %>
-        -#     <% end %>
-        -#   <% end %>
-        -# </div>
-        #image-box
-          #previews
+        .uplord-image-files-field
+          .image-previews
             - if @item.persisted?
               - @item.images.each_with_index do |image, i|
-                = image_tag image.url.url, data: { index: i }, width: "100", height: '100'
+                .image-preview{"data-index": "#{i}"}
+                  .image-preview__image-box
+                    = image_tag image.url.url, data: { index: i }, width: "118", height: '118', class: 'image'
+                  .image-preview__btn
+                    %label{ for: "item_images_attributes_#{i}_url" }
+                      編集
+                    %span.image-remove 削除
+
+            - if @item.persisted?
+              %label{ class: "add-btn", for: "add-select-image", "data-count": "#{@item.images.count}"}
+                .label-box
+                  = image_tag asset_path('icon_camera.png'), class: 'icon-camera'
+                  %p.upload-info
+                    クリックして画像をアップロード              
+            - else
+              %label{ class: "add-btn", for: "item_images_attributes_0_url", "data-index": "0"}
+                .label-box
+                  = image_tag asset_path('icon_camera.png'), class: 'icon-camera'
+                  %p.upload-info
+                    クリックして画像をアップロード
 
           = form.fields_for :images do |image|
-            .js-file_group{"data-index" => "#{image.index}"}
-              = image.file_field :url, class: "js-file"
-              %br
-              %span.js-remove 削除
-
+            .select-image{ "data-index": "#{image.index}" }
+              = image.file_field :url, class: "input-image", id:"item_images_attributes_#{image.index}_url"              
             - if @item.persisted?
               = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
 
             -# edit機能の時は追加で写真を投稿できるようにするため
           - if @item.persisted?
-            .js-file_group{"data-index" => "#{@item.images.count}"}
-              = file_field_tag :url, class: "js-file", name: "item[images_attributes][#{@item.images.count}][url]"
-              %br
-              .js-remove 削除
+            .select-image{ "data-index": "#{@item.images.count}" }
+              = file_field_tag :url, class: "input-image", name: "item[images_attributes][#{@item.images.count}][url]", id: 'add-select-image'
           
 
       .content
