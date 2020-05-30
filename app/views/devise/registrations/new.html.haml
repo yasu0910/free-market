@@ -1,4 +1,10 @@
 
+
+
+
+
+
+
 = render partial: 'items/sub-header'
 
 %main.items__new__main
@@ -7,7 +13,7 @@
     .userdata__title
       %h2.userdata__title__logo
         会員情報入力
-      = form_for @user, url: user_registration_path, html: {class: "userdata__title__content"} do |f|
+      = form_for @user, url: user_registration_path, builder: WithErrorFormBuilder, html: {class: "userdata__title__content"} do |f|
         = render "devise/shared/error_messages", resource: @user
         .userdata__title__content__inner
           .userdata__title__content__inner__nickname
@@ -39,19 +45,24 @@
           .userdata__title__content__inner__name
             お名前（全角）
           .userdata__title__content__inner__name-boxes
-            = f.text_field :first_name, {placeholder:"例) 山田", class:'firstname'}
-            = f.text_field :last_name, {placeholder:"例) 彩", class:'lastname'}
+            .userdata__title__content__inner__name-boxes__words
+              = f.text_field :first_name, {placeholder:"例) 山田", class:'firstname'}
+            .userdata__title__content__inner__name-boxes__words
+              = f.text_field :last_name, {placeholder:"例) 彩", class:'lastname'}
           .userdata__title__content__inner__hurigana
             お名前カナ（全角）
           .userdata__title__content__inner__hurigana-boxes
-            = f.text_field :first_name_hurigana, {placeholder:"例) ヤマダ", class:'firstname-hurigana'}
-            = f.text_field :last_name_hurigana, {placeholder:"例) アヤ", class:'lastname-hurigana'}
+            .userdata__title__content__inner__hurigana-boxes__words
+              = f.text_field :first_name_hurigana, {placeholder:"例) ヤマダ", class:'firstname-hurigana'}
+            .userdata__title__content__inner__hurigana-boxes__words
+              = f.text_field :last_name_hurigana, {placeholder:"例) アヤ", class:'lastname-hurigana'}
           -#生年月日入力欄
           .userdata__title__content__inner__birthday
             生年月日
             .userdata__title__content__inner__birthday__select
               .userdata__title__content__inner__birthday__select__year
-                != raw sprintf(f.date_select(:birthday, with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+                != raw sprintf(f.date_select(:birthday, with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')
+
           .userdata__title__content__inner__info
             %p.userdata__title__content__inner__info__text
               ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。

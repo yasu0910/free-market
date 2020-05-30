@@ -1,6 +1,14 @@
-
 .field_with_errors {
   display: contents;
+}
+.field_with_errors input,
+.field_with_errors select{
+  outline: 0;
+  border-color: red !important;
+}
+.errors{
+  font-size: 14px;
+  color: red;
 }
 
 .items__new__main {
@@ -100,25 +108,28 @@
           &__name-boxes {
             display: flex;
             justify-content: space-between;
-            .firstname {
-              height: 48px;
+            &__words {
               width: calc(50% - 2px);
-              padding: 10px 16px 8px;
-              border-radius: 4px;
-              border: 1px solid #ccc;
-              background: #fff;
-              line-height: 1.5;
-              font-size: 16px;
-            }
-            .lastname {
-              height: 48px;
-              width: calc(50% - 2px);
-              padding: 10px 16px 8px;
-              border-radius: 4px;
-              border: 1px solid #ccc;
-              background: #fff;
-              line-height: 1.5;
-              font-size: 16px;
+              .firstname {
+                height: 48px;
+                width: 100%;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: #fff;
+                line-height: 1.5;
+                font-size: 16px;
+              }
+              .lastname {
+                height: 48px;
+                width: 100%;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: #fff;
+                line-height: 1.5;
+                font-size: 16px;
+              }
             }
           }
           &__hurigana {
@@ -130,25 +141,28 @@
           &__hurigana-boxes {
             display: flex;
             justify-content: space-between;
-            .firstname-hurigana {
-              height: 48px;
+            &__words {
               width: calc(50% - 2px);
-              padding: 10px 16px 8px;
-              border-radius: 4px;
-              border: 1px solid #ccc;
-              background: #fff;
-              line-height: 1.5;
-              font-size: 16px;
-            }
-            .lastname-hurigana {
-              height: 48px;
-              width: calc(50% - 2px);
-              padding: 10px 16px 8px;
-              border-radius: 4px;
-              border: 1px solid #ccc;
-              background: #fff;
-              line-height: 1.5;
-              font-size: 16px;
+              .firstname-hurigana {
+                height: 48px;
+                width: 100%;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: #fff;
+                line-height: 1.5;
+                font-size: 16px;
+              }
+              .lastname-hurigana {
+                height: 48px;
+                width: 100%;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                background: #fff;
+                line-height: 1.5;
+                font-size: 16px;
+              }
             }
           }
           &__birthday {
@@ -157,7 +171,6 @@
             font-weight: bold;
             &__select {
               display: flex;
-              justify-content: center;
               margin-top: 10px;
               &__year {
                 .year,.month,.day {
@@ -167,22 +180,6 @@
                   width: 76px;
                 }
               }
-              // &__month {
-              //   .month {
-              //     border: 1px solid #ccc;
-              //     border-radius: 4px;
-              //     height: 48px;
-              //     width: 76px;
-              //   }
-              // }
-              // &__day {
-              //   .day {
-              //     border: 1px solid #ccc;
-              //     border-radius: 4px;
-              //     height: 48px;
-              //     width: 76px;
-              //   }
-              // }
             }
           }
           &__info {

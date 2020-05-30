@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
   }
   devise_scope :user do
+    get 'signup', to: 'users/registrations#signup'
     get 'delivery_info', to: 'users/registrations#new_delivery_info'
     post 'delivery_info', to: 'users/registrations#create_delivery_info'
   end
