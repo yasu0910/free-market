@@ -59,16 +59,17 @@ Things you may want to cover:
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|references|null: false, foreign_key: true|
+|user_id|references|foreign_key: true|
 |name|string|null: false|
 |content|text|null: false|
-|brand|string|null: false|
+|brand|string|
 |status|string|null: false|
-|postage|integer|null: false|
+|postage|string|null: false|
 |ship_from_address|string|null: false|
-|shipping_days|date|null: false|
+|prefecture_id|string|null: false|
+|shipping_days|string|null: false|
 |price|integer|null: false|
-|category_id|references|null: false, foreign_key: true|
+|category_id|references|foreign_key: true|
 ### Association
 - belongs_to :user
 - has_many :images
