@@ -2,8 +2,6 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :destroy]
   def index
     @items = Item.includes(:images).order('created_at DESC')
-    # @items = Item.all
-    # binding.pry
   end
 
   def new
@@ -60,16 +58,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @category_parent = @item.category.root.name
-    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
-
-    @category_child = @item.category.parent.name    
-    @category_child_array = Category.find_by(name: "#{@category_parent}", ancestry: nil).children.pluck(:name)
-
-    @category_grandchild = @item.category.id
-    # @category_grandchild_name = @item.category.name
-    @category_grandchild_array = Category.find_by(name:"#{@category_child}").children.pluck(:name)
-  
     if @item.update(item_params)
       redirect_to root_path
     else

@@ -27,23 +27,28 @@ $(document).on('turbolinks:load', function() {
                             </div>`;
     $('.create-category__form__select').append(grandchildSelectHtml);
   }
+
+  var submitBtnValue = $('.submit-btn').val();
+  if (submitBtnValue == "出品する"){
+    var urlChild = 'get_category_children';
+    var urlGrandChild = "get_category_grandchildren";
+  }else if(submitBtnValue == "編集を保存する"){
+    var urlChild = 'edit_category_children';
+    var urlGrandChild = "edit_category_grandchildren";
+  }
+  
   $('#parent_category').on('change', function(){
-    console.log(`parent`);
     var parentCategory = document.getElementById('parent_category').value;
-    console.log(`parent category ; ${parentCategory}`);
     if (parentCategory != "選択してください"){
-      console.log(`if文`); 
       $.ajax({
-        url: 'get_category_children',
+        url: urlChild,
         type: 'GET',
         data: { parent_name: parentCategory },
         dataType: 'json'
       })
       .done(function(children){
-        console.log(`done children ; ${children}`);
         $('#children_wrapper').remove(); 
         $('#grandchildren_wrapper').remove();
-
         var insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
@@ -51,22 +56,19 @@ $(document).on('turbolinks:load', function() {
         appendChidrenBox(insertHTML);
       })
       .fail(function(){
-        alert('childカテゴリー取得に失敗しました');
+        alert('カテゴリー取得に失敗しました');
       })
     }else{
-      console.log(`else`);
       $('#children_wrapper').remove(); 
       $('#grandchildren_wrapper').remove();
-
     }
   });
   
   $('.create-category__form').on('change', '#child_category', function(){
     var childId = $('#child_category option:selected').data('category');
-    console.log(`childId ; ${childId}`);
     if (childId != "---"){ 
       $.ajax({
-        url: 'get_category_grandchildren',
+        url: urlGrandChild,
         type: 'GET',
         data: { child_id: childId },
         dataType: 'json'
