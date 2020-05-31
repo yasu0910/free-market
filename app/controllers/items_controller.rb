@@ -41,20 +41,10 @@ class ItemsController < ApplicationController
     @category_parent = @item.category.root.name
     grandchild_category = @item.category
     child_category = grandchild_category.parent
-
     @category_parent_array = Category.where(ancestry: nil).pluck(:name)
     @category_parent_array.unshift("選択してください")
-
-    @category_children_array = []
-    Category.where(ancestry: child_category.ancestry).each do |children|
-      @category_children_array << children
-    end
-
-    @category_grandchildren_array = []
-    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
-      @category_grandchildren_array << grandchildren
-    end
-  
+    @category_children_array = Category.where(ancestry: child_category.ancestry)
+    @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
   end
 
   def update
