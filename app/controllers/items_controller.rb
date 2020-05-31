@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :destroy]
   def index
-    @items = Item.includes(:images).order('created_at DESC')
+    @items = Item.includes(:images).limit(9).order('created_at DESC')
   end
 
   def new

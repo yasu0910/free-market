@@ -1,0 +1,17 @@
+
+.main__pickup__product__lists
+  .main__pickup__product__lists__list
+    = link_to "#", class: "main__pickup__product__lists__list__link" do
+      = image_tag item.images[0].url.url, class: 'main__pickup__product__lists__list__link__img'
+      .main__pickup__product__lists__list__link__body
+        %h3.main__pickup__product__lists__list__link__body__name
+          = item.name
+        .main__pickup__product__lists__list__link__body__details
+          %ul.main__pickup__product__lists__list__link__body__details__lists
+            %li.main__pickup__product__lists__list__link__body__details__lists__list
+              = item.price
+            %li.main__pickup__product__lists__list__link__body__details__lists__list
+              = icon('fa', 'star', class: "favorite-icon")
+              0
+          %p.main__pickup__product__lists__list__link__body__details__include-tax
+            (税込)
