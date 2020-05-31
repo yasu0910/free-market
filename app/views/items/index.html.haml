@@ -3,16 +3,16 @@
 -# = render partial: 'item', locals: { item: @items }
 
 -# 商品一覧機能の実装の際に使用
-- @items.each do |item|
-  = item.name
-  = item.price
-  %br
-  - item.images.each do |image|
-    = image_tag image.url.url
-    %br
-  %br
-  = link_to '編集', edit_item_path(item.id)
-  %br
+-# - @items.each do |item|
+-#   = item.name
+-#   = item.price
+-#   %br
+-#   - item.images.each do |image|
+-#     = image_tag image.url.url
+-#     %br
+-#   %br
+-#   = link_to '編集', edit_item_path(item.id)
+-#   %br
 
 
 /コンテンツ部分
@@ -111,118 +111,14 @@
 
   %section.main__pickup
     %h2.main__pickup__subtitle
-      ピックアップ商品一覧
+      ピックアップアイテム
     .main__pickup__product
       .main__pickup__product__head
         = link_to "#", class: "main__pickup__product__head__link" do
           %h3.main__pickup__product__head__link__title
-            新規投稿商品
+            商品一覧
           .items-box
             = render @items
-  -#     .main__pickup__product__lists
-  -#       .main__pickup__product__lists__list
-  -#         = link_to "#", class: "main__pickup__product__lists__list__link" do
-  -#           = image_tag asset_path('product-sample3.png'), class: 'main__pickup__product__lists__list__link__img'
-  -#           .main__pickup__product__lists__list__link__body
-  -#             %h3.main__pickup__product__lists__list__link__body__name
-  -#               product3
-  -#             .main__pickup__product__lists__list__link__body__details
-  -#               %ul.main__pickup__product__lists__list__link__body__details__lists
-  -#                 %li.main__pickup__product__lists__list__link__body__details__lists__list
-  -#                   30000円
-  -#                 %li.main__pickup__product__lists__list__link__body__details__lists__list
-  -#                   = icon('fa', 'star', class: "favorite-icon")
-  -#                   0
-  -#               %p.main__pickup__product__lists__list__link__body__details__include-tax
-  -#                 (税込)
-        
-  -#       .main__pickup__product__lists__list
-  -#         = link_to "#", class: "main__pickup__product__lists__list__link" do
-  -#           = image_tag asset_path('product-sample2.png'), class: 'main__pickup__product__lists__list__link__img'
-  -#           .main__pickup__product__lists__list__link__body
-  -#             %h3.main__pickup__product__lists__list__link__body__name
-  -#               product2
-  -#             .main__pickup__product__lists__list__link__body__details
-  -#               %ul.main__pickup__product__lists__list__link__body__details__lists
-  -#                 %li.main__pickup__product__lists__list__link__body__details__lists__list
-  -#                   20000円
-  -#                 %li.main__pickup__product__lists__list__link__body__details__lists__list
-  -#                   = icon('fa', 'star', class: "favorite-icon")
-  -#                   0
-  -#               %p.main__pickup__product__lists__list__link__body__details__include-tax
-  -#                 (税込)
-
-  -#       .main__pickup__product__lists__list
-  -#         = link_to "#", class: "main__pickup__product__lists__list__link" do
-  -#           = image_tag asset_path('product-sample1.png'), class: 'main__pickup__product__lists__list__link__img'
-  -#           .main__pickup__product__lists__list__link__body
-  -#             %h3.main__pickup__product__lists__list__link__body__name
-  -#               product1
-  -#             .main__pickup__product__lists__list__link__body__details
-  -#               %ul.main__pickup__product__lists__list__link__body__details__lists
-  -#                 %li.main__pickup__product__lists__list__link__body__details__lists__list
-  -#                   10000円
-  -#                 %li.main__pickup__product__lists__list__link__body__details__lists__list
-  -#                   = icon('fa', 'star', class: "favorite-icon")
-  -#                   0
-  -#               %p.main__pickup__product__lists__list__link__body__details__include-tax
-  -#                 (税込)
-  -# %section.main__pickup
-  -#   %h2.main__pickup__subtitle
-  -#     ピックアップブランド
-  -#   .main__pickup__product
-  -#     .main__pickup__product__head
-  -#       = link_to "#", class: "main__pickup__product__head__link" do
-  -#         %h3.main__pickup__product__head__link__title
-  -#           アーカイバ
-  -#     .main__pickup__product__lists
-  -#       .main__pickup__product__lists__list
-  -#         = link_to "#", class: "main__pickup__product__lists__list__link" do
-  -#           = image_tag asset_path('product-sample3.png'), class: 'main__pickup__product__lists__list__link__img'
-  -#           .main__pickup__product__lists__list__link__body
-  -#             %h3.main__pickup__product__lists__list__link__body__name
-  -#               product3
-  -#             .main__pickup__product__lists__list__link__body__details
-  -#               %ul.main__pickup__product__lists__list__link__body__details__lists
-  -#                 %li.main__pickup__product__lists__list__link__body__details__lists__list
-  -#                   30000円
-  -#                 %li.main__pickup__product__lists__list__link__body__details__lists__list
-  -#                   = icon('fa', 'star', class: "favorite-icon")
-  -#                   0
-  -#               %p.main__pickup__product__lists__list__link__body__details__include-tax
-  -#                 (税込)
-        
-  -#       .main__pickup__product__lists__list
-  -#         = link_to "#", class: "main__pickup__product__lists__list__link" do
-  -#           = image_tag asset_path('product-sample2.png'), class: 'main__pickup__product__lists__list__link__img'
-  -#           .main__pickup__product__lists__list__link__body
-  -#             %h3.main__pickup__product__lists__list__link__body__name
-  -#               product2
-  -#             .main__pickup__product__lists__list__link__body__details
-  -#               %ul.main__pickup__product__lists__list__link__body__details__lists
-  -#                 %li.main__pickup__product__lists__list__link__body__details__lists__list
-  -#                   20000円
-  -#                 %li.main__pickup__product__lists__list__link__body__details__lists__list
-  -#                   = icon('fa', 'star', class: "favorite-icon")
-  -#                   0
-  -#               %p.main__pickup__product__lists__list__link__body__details__include-tax
-  -#                 (税込)
-
-  -#       .main__pickup__product__lists__list
-  -#         = link_to "#", class: "main__pickup__product__lists__list__link" do
-  -#           = image_tag asset_path('product-sample1.png'), class: 'main__pickup__product__lists__list__link__img'
-  -#           .main__pickup__product__lists__list__link__body
-  -#             %h3.main__pickup__product__lists__list__link__body__name
-  -#               product1
-  -#             .main__pickup__product__lists__list__link__body__details
-  -#               %ul.main__pickup__product__lists__list__link__body__details__lists
-  -#                 %li.main__pickup__product__lists__list__link__body__details__lists__list
-  -#                   10000円
-  -#                 %li.main__pickup__product__lists__list__link__body__details__lists__list
-  -#                   = icon('fa', 'star', class: "favorite-icon")
-  -#                   0
-  -#               %p.main__pickup__product__lists__list__link__body__details__include-tax
-  -#                 (税込)
 
 = render partial: 'app-banner'
 
