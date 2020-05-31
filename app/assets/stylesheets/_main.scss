@@ -230,7 +230,7 @@
   }
 
   &__pickup {
-    padding-bottom: 80px;
+    padding-bottom: 20px;
     &__subtitle {
       text-align: center;
       font-size: 28px;
@@ -249,11 +249,20 @@
           }
         }
       }
-      &__lists {
-        width: 780px;
-        margin: 26px auto;
+      .items-box {
         display: flex;
-        justify-content: space-around;
+        flex-wrap: wrap;
+        width: 780px;
+        margin: 0 auto;
+        justify-content: flex-start;
+      }
+      &__lists {
+        // width: 780px;
+        // margin: 26px auto;
+        // display: flex;
+        // justify-content: space-between;
+        margin: 30px 20px;
+
         &__list {
           width: 220px;
           display: inline-block;

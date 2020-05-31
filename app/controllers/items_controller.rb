@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   def index
+    @items = Item.limit(9)
   end
 
   def new
@@ -18,7 +19,7 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-  
+
   def get_category_children
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
