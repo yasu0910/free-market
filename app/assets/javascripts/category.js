@@ -13,7 +13,7 @@ $(document).on('turbolinks:load', function() {
                            <select>
                          </div>
                        </div>`;
-    $('.create-category__form').append(childSelectHtml);
+    $('.create-category__form__select').append(childSelectHtml);
   }
   function appendGrandchidrenBox(insertHTML){
     var grandchildSelectHtml = '';
@@ -25,13 +25,23 @@ $(document).on('turbolinks:load', function() {
                                 </select>
                               </div>
                             </div>`;
-    $('.create-category__form').append(grandchildSelectHtml);
+    $('.create-category__form__select').append(grandchildSelectHtml);
   }
+
+  var submitBtnValue = $('.submit-btn').val();
+  if (submitBtnValue == "出品する"){
+    var urlChild = 'get_category_children';
+    var urlGrandChild = "get_category_grandchildren";
+  }else if(submitBtnValue == "編集を保存する"){
+    var urlChild = 'edit_category_children';
+    var urlGrandChild = "edit_category_grandchildren";
+  }
+  
   $('#parent_category').on('change', function(){
     var parentCategory = document.getElementById('parent_category').value;
-    if (parentCategory != "選択してください"){ 
+    if (parentCategory != "選択してください"){
       $.ajax({
-        url: 'get_category_children',
+        url: urlChild,
         type: 'GET',
         data: { parent_name: parentCategory },
         dataType: 'json'
@@ -39,8 +49,6 @@ $(document).on('turbolinks:load', function() {
       .done(function(children){
         $('#children_wrapper').remove(); 
         $('#grandchildren_wrapper').remove();
-        $('#size_wrapper').remove();
-        $('#brand_wrapper').remove();
         var insertHTML = '';
         children.forEach(function(child){
           insertHTML += appendOption(child);
@@ -53,16 +61,14 @@ $(document).on('turbolinks:load', function() {
     }else{
       $('#children_wrapper').remove(); 
       $('#grandchildren_wrapper').remove();
-      $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
     }
   });
   
   $('.create-category__form').on('change', '#child_category', function(){
-    var childId = $('#child_category option:selected').data('category'); 
+    var childId = $('#child_category option:selected').data('category');
     if (childId != "---"){ 
       $.ajax({
-        url: 'get_category_grandchildren',
+        url: urlGrandChild,
         type: 'GET',
         data: { child_id: childId },
         dataType: 'json'
@@ -70,8 +76,6 @@ $(document).on('turbolinks:load', function() {
       .done(function(grandchildren){
         if (grandchildren.length != 0) {
           $('#grandchildren_wrapper').remove();
-          $('#size_wrapper').remove();
-          $('#brand_wrapper').remove();
           var insertHTML = '';
           grandchildren.forEach(function(grandchild){
             insertHTML += appendOption(grandchild);
@@ -84,8 +88,6 @@ $(document).on('turbolinks:load', function() {
       })
     }else{
       $('#grandchildren_wrapper').remove();
-      $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
     }
   });
 });

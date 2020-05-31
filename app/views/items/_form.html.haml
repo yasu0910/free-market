@@ -1,0 +1,177 @@
+%main.items-new-main
+  .main__center
+    = form_for [@item] do |form|      
+      .content
+        .content__title
+          %h2.content__title__name
+            出品画像
+          %h2.content__title__tag
+            必須
+        .content__text
+          最大10枚までアップロードできます
+
+        .uplord-image-files-field
+          .image-previews
+            - if @item.persisted?
+              - @item.images.each_with_index do |image, i|
+                .image-preview{"data-index": "#{i}"}
+                  .image-preview__image-box
+                    = image_tag image.url.url, data: { index: i }, width: "118", height: '118', class: 'image'
+                  .image-preview__btn
+                    %label{ for: "item_images_attributes_#{i}_url", class: "image-edit" }
+                      編集
+                    %span.image-remove 削除
+
+            - if @item.persisted?
+              %label{ class: "add-btn", for: "add-select-image", "data-count": "#{@item.images.count}"}
+                .label-box
+                  = image_tag asset_path('icon_camera.png'), class: 'icon-camera'
+                  %p.upload-info
+                    クリックして画像をアップロード              
+            - else
+              %label{ class: "add-btn", for: "item_images_attributes_0_url", "data-index": "0"}
+                .label-box
+                  = image_tag asset_path('icon_camera.png'), class: 'icon-camera'
+                  %p.upload-info
+                    クリックして画像をアップロード
+
+          = form.fields_for :images do |image|
+            .select-image{ "data-index": "#{image.index}" }
+              = image.file_field :url, class: "input-image", id:"item_images_attributes_#{image.index}_url"              
+            - if @item.persisted?
+              = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+
+            -# edit機能の時は追加で写真を投稿できるようにするため
+          - if @item.persisted?
+            .select-image{ "data-index": "#{@item.images.count}" }
+              = file_field_tag :url, class: "input-image", name: "item[images_attributes][#{@item.images.count}][url]", id: 'add-select-image'
+          
+
+      .content
+        .content__title
+          %h2.content__title__name
+            商品名
+          %h2.content__title__tag
+            必須
+        = form.text_field :name, class: "input-text", placeholder: "40字まで"
+        .content__title
+          %h2.content__title__name
+            商品の説明
+          %h2.content__title__tag
+            必須
+        = form.text_area :content, rows: "6", class: "input-longtext", placeholder: "商品の説明（必須 1,000文字以内)\n（色、素材、重さ、定価、注意点など）\n\n 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+
+        -# jsで入力文字数を表示
+        %h4.count-word
+          %span.count-word__num 0
+          \/1000
+
+      .content
+        %h1.content__info
+          商品の詳細
+
+        -# カテゴリー機能      
+        .create-category
+          .create-category__form
+            %a.create-category__form__name
+              カテゴリー
+            %a.create-category__form__tag
+              必須
+            .create-category__form__select
+              .create-category__form__select__box
+                = form.select :category_id, @category_parent_array, {selected: @category_parent}, {class: 'create-category__form__select__box__btn', id: 'parent_category'}
+              - if @item.persisted?
+                .create-category__form__select__added#children_wrapper
+                  .create-category__form__select__box
+                    = form.select :category_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "選択してください", selected: @item.category.parent.id}),{}, {class: 'create-category__form__select__box__btn', id: 'child_category'}
+                .create-category__form__select__added#grandchildren_wrapper
+                  .create-category__form__select__box
+                    = form.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "選択してください", selected: @item.category.id}),{}, {class: 'create-category__form__select__box__btn', id: 'grandchild_category'}
+
+        .content__title
+          %h2.content__title__name
+            ブランド
+          %h2.content__title__tag-optional
+            任意
+        = form.text_field :brand, class: "input-text", placeholder: "例）シャネル"
+        .content__title
+          %h2.content__title__name
+            商品の状態
+          %h2.content__title__tag
+            必須
+        - if @item.persisted?
+          = form.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3 ] ,["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態状態が悪い", 6] ], {}, class: "input-select"       
+        - else
+          = form.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3 ] ,["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態状態が悪い", 6] ], { include_blank: "選択してください", selected:"" }, class: "input-select"       
+
+      .content
+        %h1.content__info
+          配送について
+        .content__title
+          %h2.content__title__name
+            配送料の負担
+          %h2.content__title__tag
+            必須
+        - if @item.persisted?
+          = form.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], {}, class: "input-select"
+        - else
+          = form.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], { include_blank: "選択してください", selected:"" }, class: "input-select"
+  
+        .content__title
+          %h2.content__title__name
+            発送元の地域
+          %h2.content__title__tag
+            必須
+        - if @item.persisted?
+          = form.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: "input-select"
+        - else
+          = form.collection_select :prefecture_id, Prefecture.all, :id, :name, { include_blank: "選択してください", selected:"" }, class: "input-select"
+  
+        .content__title
+          %h2.content__title__name
+            発送までの日数
+          %h2.content__title__tag
+            必須
+        - if @item.persisted?
+          = form.select :shipping_days, [ ["1〜2日で発送",1], ["2〜3日で発送", 2], ["4〜7日で発送", 3]], {}, class: "input-select"    
+        - else
+          = form.select :shipping_days, [ ["1〜2日で発送",1], ["2〜3日で発送", 2], ["4〜7日で発送", 3]], { include_blank: "選択してください", selected:"" }, class: "input-select"    
+
+      .content
+        %h1.content__info
+          価格 (¥300〜9,999,999)
+
+        -# ここだけ横並びにしたいが、クラス名は変更したくないため
+        .flex
+          .content__title
+            %h2.content__title__name
+              販売価格
+            %h2.content__title__tag
+              必須
+          .price
+            %p.price__yen
+              ¥
+            = form.number_field :price, class: "input-price", placeholder: "0", min: 300, max: 9999999
+        .calc-box
+          %h3.calc-box__title
+            販売手数料 (10%)         
+          -# jsで計算結果を表示
+          %p.calc-box__result.fee
+            
+        %hr.partition
+        .calc-box
+          %h3.calc-box__title
+            販売利益          
+          -# jsで計算結果を表示
+          %p.calc-box__result.plofit
+            
+        .btn-area
+          - if @item.persisted?
+            = form.submit "編集を保存する", class: "submit-btn"
+          - else
+            = form.submit "出品する", class: "submit-btn"
+
+          = form.submit "下書きに保存", class: "save-btn"
+          = link_to "もどる", root_path, class:"back-btn"
+        %h4.caution
+          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
