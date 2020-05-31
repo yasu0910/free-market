@@ -17,7 +17,7 @@
 
 // 仕切りの線
 @mixin partition-border() {
-  hr.partition {
+  .partition {
     border-top: 1px solid #efefef;
     border-left: 0 solid #efefef;
     border-bottom: 0 solid #efefef;

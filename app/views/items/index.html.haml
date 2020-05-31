@@ -1,5 +1,20 @@
 = render partial: 'header'
 
+-# = render partial: 'item', locals: { item: @items }
+
+-# 商品一覧機能の実装の際に使用
+- @items.each do |item|
+  = item.name
+  = item.price
+  %br
+  - item.images.each do |image|
+    = image_tag image.url.url
+    %br
+  %br
+  = link_to '編集', edit_item_path(item.id)
+  %br
+
+
 /コンテンツ部分
 .main
   %section.main__visual
