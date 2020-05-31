@@ -1,0 +1,41 @@
+
+
+
+
+
+
+= render partial: 'items/sub-header'
+
+%main.items__new__main
+  -# ログイン画面
+  .login
+    .login__menu
+      アカウントをお持ちでない方はこちら
+      = link_to signup_path, class: "btn email" do
+        新規会員登録
+
+    -# 既に登録している人のボタン
+    .login__inner
+      = link_to "#", class: "btn facebook" do
+        = icon('fab', 'facebook-square')
+        Facebookで登録
+      = link_to "#", class: "btn google" do
+        = icon('fab', 'google')
+        Googleで登録
+
+    -# アドレス・パスワード記入欄
+    .login__new
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "login__new__content"}) do |f|
+        - flash.each do |name, msg|
+          = content_tag :div, msg, id: "flash_#{name}"
+        .login__new__content__mail
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス", class: "mail"
+        .login__new__content__password
+          = f.password_field :password, autocomplete: "current-password", placeholder: "パスワード", class: "password"
+        .login__new__content__submit
+          = f.submit "ログイン", class: "submit"
+        .login__new__content__forget
+          = link_to "#", class: "forget" do
+            パスワードをお忘れの方
+
+= render partial: 'items/sub-footer'

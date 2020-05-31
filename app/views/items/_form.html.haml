@@ -69,30 +69,24 @@
       .content
         %h1.content__info
           商品の詳細
-        .content__title
-          %h2.content__title__name
-            カテゴリー
-          %h2.content__title__tag
-            必須
 
-        -# カテゴリー作成後ancestryに変更
-        -# %input.input-select{type: "search", list: "category"}
-        -# %datalist#category
-        -#   %option(value="選択してください")
-        -#   %option(value="レディース")
-        -#   %option(value="メンズ")
-        -#   %option(value="ベビー・キッズ")
-        -#   %option(value="インテリア・住まい・小物")
-        -#   %option(value="本・音楽・ゲーム")
-        -#   %option(value="おもちゃ・ホビー・グッズ")
-        -#   %option(value="コスメ・香水・美容")
-        -#   %option(value="家電・スマホ・カメラ")
-        -#   %option(value="スポーツ・レジャー")
-        -#   %option(value="ハンドメイド")
-        -#   %option(value="チケット")
-        -#   %option(value="自転車・オートバイ")
-        -#   %option(value="その他")
-        -#   %option(value="")        
+        -# カテゴリー機能      
+        .create-category
+          .create-category__form
+            %a.create-category__form__name
+              カテゴリー
+            %a.create-category__form__tag
+              必須
+            .create-category__form__select
+              .create-category__form__select__box
+                = form.select :category_id, @category_parent_array, {selected: @category_parent}, {class: 'create-category__form__select__box__btn', id: 'parent_category'}
+              - if @item.persisted?
+                .create-category__form__select__added#children_wrapper
+                  .create-category__form__select__box
+                    = form.select :category_id, options_for_select(@category_children_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "選択してください", selected: @item.category.parent.id}),{}, {class: 'create-category__form__select__box__btn', id: 'child_category'}
+                .create-category__form__select__added#grandchildren_wrapper
+                  .create-category__form__select__box
+                    = form.select :category_id, options_for_select(@category_grandchildren_array.map{|b| [b.name, b.id, {data:{category: b.id}}]}, {prompt: "選択してください", selected: @item.category.id}),{}, {class: 'create-category__form__select__box__btn', id: 'grandchild_category'}
 
         .content__title
           %h2.content__title__name
@@ -105,7 +99,10 @@
             商品の状態
           %h2.content__title__tag
             必須
-        = form.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3 ] ,["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態状態が悪い", 6] ], { include_blank: "選択してください", selected:"" }, class: "input-select"       
+        - if @item.persisted?
+          = form.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3 ] ,["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態状態が悪い", 6] ], {}, class: "input-select"       
+        - else
+          = form.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3 ] ,["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態状態が悪い", 6] ], { include_blank: "選択してください", selected:"" }, class: "input-select"       
 
       .content
         %h1.content__info
@@ -115,21 +112,30 @@
             配送料の負担
           %h2.content__title__tag
             必須
-        = form.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], { include_blank: "選択してください", selected:"" }, class: "input-select"       
+        - if @item.persisted?
+          = form.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], {}, class: "input-select"
+        - else
+          = form.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], { include_blank: "選択してください", selected:"" }, class: "input-select"
   
         .content__title
           %h2.content__title__name
             発送元の地域
           %h2.content__title__tag
             必須
-        = form.collection_select :prefecture_id, Prefecture.all, :id, :name, { include_blank: "選択してください", selected:"" }, class: "input-select"
+        - if @item.persisted?
+          = form.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: "input-select"
+        - else
+          = form.collection_select :prefecture_id, Prefecture.all, :id, :name, { include_blank: "選択してください", selected:"" }, class: "input-select"
   
         .content__title
           %h2.content__title__name
             発送までの日数
           %h2.content__title__tag
             必須
-        = form.select :shipping_days, [ ["1〜2日で発送",1], ["2〜3日で発送", 2], ["4〜7日で発送", 3]], { include_blank: "選択してください", selected:"" }, class: "input-select"    
+        - if @item.persisted?
+          = form.select :shipping_days, [ ["1〜2日で発送",1], ["2〜3日で発送", 2], ["4〜7日で発送", 3]], {}, class: "input-select"    
+        - else
+          = form.select :shipping_days, [ ["1〜2日で発送",1], ["2〜3日で発送", 2], ["4〜7日で発送", 3]], { include_blank: "選択してください", selected:"" }, class: "input-select"    
 
       .content
         %h1.content__info

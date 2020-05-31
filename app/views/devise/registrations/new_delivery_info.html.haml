@@ -1,0 +1,86 @@
+
+
+
+
+
+
+= render partial: 'items/sub-header'
+
+%main.delivery-info-main
+  .my-container
+    .main__center
+      %h1.content-head
+        商品送付先住所情報
+      = form_for @delivery_info, url:delivery_info_path, builder: WithErrorFormBuilder do |f|
+        = render "devise/shared/error_messages", resource: @delivery_info
+        .content-main
+          .content
+            .content__title
+              %h2.content__title__name
+                お名前
+              %h2.content__title__tag
+                必須
+            = f.text_field :first_name, {placeholder:"例) 山田", class:'input-text'}
+            = f.text_field :last_name, {placeholder:"例) 彩", class:'input-text'}
+
+            .content__title
+              %h2.content__title__name
+                お名前カナ
+              %h2.content__title__tag
+                必須
+            = f.text_field :first_name_hurigana, {placeholder:"例) ヤマダ", class:'input-text'}
+            = f.text_field :last_name_hurigana, {placeholder:"例) アヤ", class:'input-text'}
+            
+            .content__title
+              %h2.content__title__name
+                郵便番号
+              %h2.content__title__tag
+                必須
+            = f.text_field :postal_code, {placeholder:"例) 1234567", class:'input-text'}
+            
+            .content__title
+              %h2.content__title__name
+                都道府県
+              %h2.content__title__tag
+                必須
+            = f.text_field :state, {placeholder:"例) 北海道", class:'input-text'}
+            
+            .content__title
+              %h2.content__title__name
+                市区町村
+              %h2.content__title__tag
+                必須
+            = f.text_field :city, {placeholder:"例）横浜市緑区", class:'input-text'}
+            
+            .content__title
+              %h2.content__title__name
+                番地
+              %h2.content__title__tag
+                必須
+            = f.text_field :street, {placeholder:"例) 青山1-1-1", class:'input-text'}
+            
+            .content__title
+              %h2.content__title__name
+                建物名
+              %h2.content__title__tag-optional
+                任意
+            = f.text_field :building_name, {placeholder:"例) 柳ビル", class:'input-text'}
+
+            .content__title
+              %h2.content__title__name
+                部屋番号
+              %h2.content__title__tag-optional
+                任意
+            = f.text_field :room_number, {placeholder:"例) 101", class:'input-text'}
+
+            .content__title
+              %h2.content__title__name
+                電話
+              %h2.content__title__tag-optional
+                任意
+            = f.text_field :phone_number, {placeholder:"例) 09012345678", class:'input-text'}
+
+            = f.submit "登録する", class: "submit-btn"
+
+
+= render partial: 'items/sub-footer'
