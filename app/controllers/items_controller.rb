@@ -20,6 +20,11 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @card = Card.where(user_id: current_user.id).first
+    @item = Item.find(params[:id])
+  end
   
   def get_category_children  
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children  

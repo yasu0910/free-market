@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :nickname, :first_name, :last_name, :first_name_hurigana, :last_name_hurigana, :birthday ,presence: true
   has_one :delivery_info
+  has_one :cards, dependent: :destroy
 end
 
