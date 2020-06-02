@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :update, :destroy]
+  before_action :set_item, only: [:edit, :update, :destroy, :show]
   def index
     @items = Item.where(buyer_id: nil).includes(:images).limit(9).order('created_at DESC')
   end
@@ -22,10 +22,11 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @card = Card.where(user_id: current_user.id).first
-    @item = Item.find(params[:id])
+    if user_signed_in?
+      @card = Card.where(user_id: current_user.id).first
+      @item = Item.find(params[:id])
+    end
   end
-  
   def get_category_children  
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children  
   end
