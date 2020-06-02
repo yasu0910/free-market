@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
 
   def show
     if user_signed_in?
-      @card = Card.where(user_id: current_user.id).first
+      @card = Card.find_by(user_id: current_user.id)
       @item = Item.find(params[:id])
     end
   end
