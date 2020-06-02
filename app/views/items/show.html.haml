@@ -22,14 +22,16 @@
     %li
       %p
         = @item.name
-.main
-  
+.main 
   - if flash[:buy_notice]
     .flash-message
       = flash[:buy_notice]
   -if flash[:buy_alert]
     .flash-message
       = flash[:buy_alert]
+  - if flash[:item_delete_alert]
+    .flash-message
+      = flash[:item_delete_alert]
   .main__show
     .main__show__content
       .main__show__content__item-box
