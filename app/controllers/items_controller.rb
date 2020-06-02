@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :update, :destroy]
+  before_action :set_item, only: [:edit, :update, :destroy, :show]
   def index
-    @items = Item.includes(:images).limit(9).order('created_at DESC')
+    @items = Item.where(buyer_id: nil).includes(:images).limit(9).order('created_at DESC')
   end
 
   def new
@@ -23,7 +23,13 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-  
+
+  def show
+    if user_signed_in?
+      @card = Card.find_by(user_id: current_user.id)
+      @item = Item.find(params[:id])
+    end
+  end
   def get_category_children  
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children  
   end
@@ -66,11 +72,18 @@ class ItemsController < ApplicationController
   end
   
   def destroy
+    if @item.destroy
+        flash[:item_delete_notice] = "削除が完了しました"
+        redirect_to root_path
+    else
+      flash[:item_delete_alert] = '削除が失敗しました'
+      render :show
+    end
   end
 
   private
   def item_params
-    params.require(:item).permit(:name, :category_id, :content, :brand, :status, :postage, :prefecture_id, :shipping_days, :price, images_attributes: [:url, :_destroy, :id])
+    params.require(:item).permit(:name, :category_id, :content, :brand, :status, :postage, :prefecture_id, :shipping_days, :price, images_attributes: [:url, :_destroy, :id]).merge(user_id: current_user.id)
   end
   
   def set_item

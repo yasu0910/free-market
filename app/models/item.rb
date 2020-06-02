@@ -7,4 +7,5 @@ class Item < ApplicationRecord
   belongs_to :category
   validates :name, :category_id, :content, :status, :postage, :prefecture_id, :shipping_days, :price ,presence: true
   validates :images,presence: true
+  belongs_to :user
 end

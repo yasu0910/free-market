@@ -55,6 +55,31 @@
             }
           }
         }
+        .show-page-btn {
+          text-decoration: none;
+          display: block;
+          text-align: center;
+          margin: 20px auto;
+          line-height: 48px;
+          background-color: #3CCACE;
+          color: #fff;
+          width: 60%;
+          font-size: 18px;
+          border-radius: 100px;
+        }
+        
+        .item-delete-btn {
+          text-decoration: none;
+          display: block;
+          text-align: center;
+          margin: 20px auto;
+          line-height: 48px;
+          background-color: red;
+          color: #fff;
+          width: 60%;
+          font-size: 18px;
+          border-radius: 100px;
+        }
         &__text {
           line-height: 1.5;
           font-size: 18px;

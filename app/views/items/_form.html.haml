@@ -111,10 +111,8 @@
             商品の状態
           %h2.content__title__tag
             必須
-        - if @item.persisted?
-          = form.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3 ] ,["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態状態が悪い", 6] ], {}, class: "input-select"       
-        - else
-          = form.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3 ] ,["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態状態が悪い", 6] ], { include_blank: "選択してください", selected:"" }, class: "input-select"       
+
+        = form.select :status, [ ["選択してください",""], ["新品、未使用","新品、未使用"], ["未使用に近い", "未使用に近い"], ["目立った傷や汚れなし", "目立った傷や汚れなし"] ,["やや傷や汚れあり", "やや傷や汚れあり"], ["傷や汚れあり", "傷や汚れあり"], ["全体的に状態状態が悪い", "全体的に状態状態が悪い"] ], {}, class: "input-select"       
         - if @item.errors.messages[:status] != []
           %p.item-form-alert 
             商品の状態を選択してください
@@ -127,10 +125,7 @@
             配送料の負担
           %h2.content__title__tag
             必須
-        - if @item.persisted?
-          = form.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], {}, class: "input-select"
-        - else
-          = form.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], { include_blank: "選択してください", selected:"" }, class: "input-select"
+        = form.select :postage, [ ["選択してください",""], ["送料込み(出品者負担)","送料込み(出品者負担)"], ["着払い(購入者負担)", "着払い(購入者負担)"]], {}, class: "input-select"
         - if @item.errors.messages[:postage] != []
           %p.item-form-alert 
             配送料の負担を選択してください
@@ -140,10 +135,7 @@
             発送元の地域
           %h2.content__title__tag
             必須
-        - if @item.persisted?
-          = form.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: "input-select"
-        - else
-          = form.collection_select :prefecture_id, Prefecture.all, :id, :name, { include_blank: "選択してください", selected:"" }, class: "input-select"
+        = form.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: "input-select"
         - if @item.errors.messages[:prefecture_id] != []
           %p.item-form-alert 
             発送元の地域を選択してください
@@ -153,10 +145,7 @@
             発送までの日数
           %h2.content__title__tag
             必須
-        - if @item.persisted?
-          = form.select :shipping_days, [ ["1〜2日で発送",1], ["2〜3日で発送", 2], ["4〜7日で発送", 3]], {}, class: "input-select"    
-        - else
-          = form.select :shipping_days, [ ["選択してください",""],["1〜2日で発送",1], ["2〜3日で発送", 2], ["4〜7日で発送", 3]], {}, class: "input-select"    
+        = form.select :shipping_days, [ ["選択してください",""], ["1〜2日で発送","1〜2日で発送"], ["2〜3日で発送", "2〜3日で発送"], ["4〜7日で発送", "4〜7日で発送"]], {}, class: "input-select"    
         - if @item.errors.messages[:shipping_days] != []
           %p.item-form-alert 
             発送までの日数を選択してください

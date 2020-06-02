@@ -2,4 +2,5 @@
 .sub-header
   .sub-header__content
     %h1.sub-header__content__logo
-      = image_tag asset_path('logo.png'), class: "sub-header__content__logo__image"
+      = link_to root_path do
+        = image_tag asset_path('logo.png'), class: "sub-header__content__logo__image"

@@ -43,7 +43,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   protected
 
   def delivery_info_params
-    params.require(:delivery_info).permit(:first_name, :last_name, :first_name_hurigana, :last_name_hurigana, :postal_code, :state, :city, :street, :building_name, :room_number, :phone_number)
+    params.require(:delivery_info).permit(:first_name, :last_name, :first_name_hurigana, :last_name_hurigana, :postal_code, :city, :street, :building_name, :room_number, :phone_number, :prefecture_id)
   end
   # GET /resource/edit
   # def edit

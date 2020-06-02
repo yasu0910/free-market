@@ -3,7 +3,7 @@
   .header__content
     .header__content__main
       %h1.header__content__main__logo
-        = link_to "#", class: "header__content__main__logo__link" do
+        = link_to root_path, class: "header__content__main__logo__link" do
           = image_tag asset_path('logo.png'), class: "header__content__main__logo__link__img"
       .header__content__main__search-box
         %form.header__content__main__search-box__form
@@ -22,7 +22,7 @@
           %li.header__content__nav__right-list__item
             = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "header__content__nav__right-list__item__link" 
           %li.header__content__nav__right-list__item
-            = link_to "マイページ", "#", class: "header__content__nav__right-list__item__link" 
+            = link_to "マイページ", user_path(current_user.id), class: "header__content__nav__right-list__item__link" 
         - else
           %li.header__content__nav__right-list__item
             = link_to "ログイン", new_user_session_path, class: "header__content__nav__right-list__item__link" 
