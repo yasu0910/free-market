@@ -17,6 +17,11 @@
 
 /コンテンツ部分
 .main
+
+  - if flash[:item_delete_notice]
+    .flash-message
+      = flash[:item_delete_notice]
+
   %section.main__visual
     .main__visual__content
       %h2.main__visual__content__subtitle
