@@ -27,8 +27,14 @@ class CardController < ApplicationController
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
       card.delete
+      if customer.delete && card.delete
+        flash[:card_delete_notice] = '削除しました。'
+        redirect_to root_path
+      else
+        flash[:card_delete_alert] = '削除に失敗しました。'
+        redirect_to action: "delete"
+      end
     end
-      redirect_to root_path
   end
 
   def show #Cardのデータpayjpに送り情報を取り出す

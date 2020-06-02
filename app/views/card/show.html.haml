@@ -1,5 +1,10 @@
 = render partial: 'items/sub-header'
 
+
+-if flash[:card_delete_alert]
+  .flash-message
+    = flash[:card_delete_alert]
+
 %main.credits-new-main
   .main__center
 
