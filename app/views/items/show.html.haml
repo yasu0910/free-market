@@ -53,7 +53,7 @@
                 = link_to '商品の編集', "/items/#{@item.id}/edit", method: :get
               %li
                 = link_to '商品の削除', "/items/#{@item.id}", method: :delete
-        -# 削除ボタン（未ログイン時に出る）
+        -# 購入ボタン（未ログイン時に出る）
         - if not user_signed_in?
           .main__show__content__item-box__logout
             %ul
