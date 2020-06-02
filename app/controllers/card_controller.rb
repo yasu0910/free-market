@@ -25,8 +25,6 @@ class CardController < ApplicationController
       redirect_to action: "new"
     else
       customer = Payjp::Customer.retrieve(card.customer_id)
-      customer.delete
-      card.delete
       if customer.delete && card.delete
         flash[:card_delete_notice] = '削除しました。'
         redirect_to root_path
@@ -61,12 +59,11 @@ class CardController < ApplicationController
       customer: @card.customer_id,
       currency: 'jpy',
       )
-      @item.update(buyer_id: current_user.id)
-      if @item.buyer_id.blank?
-        flash[:buy_alert] = '購入に失敗しました。'
+      if @item.update(buyer_id: current_user.id)
+        flash[:buy_notice] = '購入しました。'
         redirect_to item_path(@item.id)
       else
-        flash[:buy_notice] = '購入しました。'
+        flash[:buy_alert] = '購入に失敗しました。'
         redirect_to item_path(@item.id)
       end
     end
