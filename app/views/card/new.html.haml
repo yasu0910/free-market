@@ -24,7 +24,7 @@
             = f.collection_select :exp_month , Month.all, :id, :name, {}, class: 'input-select-half'
             %span 月/
           .select-date
-            = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'input-select-half', id: "exp_year", type: "text"
+            = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{prompt:"--"} , class: 'input-select-half', id: "exp_year", type: "text"
             %span 年
         .content__title
           %h2.content__title__name
