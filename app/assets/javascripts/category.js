@@ -30,8 +30,8 @@ $(document).on('turbolinks:load', function() {
 
   var submitBtnValue = $('.submit-btn').val();
   if (submitBtnValue == "出品する"){
-    var urlChild = 'get_category_children';
-    var urlGrandChild = "get_category_grandchildren";
+    var urlChild = '/items/get_category_children';
+    var urlGrandChild = "/items/get_category_grandchildren";
   }else if(submitBtnValue == "編集を保存する"){
     var urlChild = 'edit_category_children';
     var urlGrandChild = "edit_category_grandchildren";

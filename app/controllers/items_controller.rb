@@ -16,7 +16,10 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
-    else
+    else   
+      @item.images.build
+      @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+      @category_parent_array.unshift("選択してください")
       render :new
     end
   end
@@ -57,6 +60,13 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to root_path
     else
+      @category_parent = @item.category.root.name
+      grandchild_category = @item.category
+      child_category = grandchild_category.parent
+      @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+      @category_parent_array.unshift("選択してください")
+      @category_children_array = Category.where(ancestry: child_category.ancestry)
+      @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
       render :edit
     end
   end
