@@ -1,4 +1,4 @@
-= render partial: 'header'
+= render partial: 'items/header'
 
 
 .user-my-page-main
@@ -131,14 +131,16 @@
         = link_to '#', class: 'content-link' do
           %figure
             = image_tag asset_path('member_photo_noimage_thumb.png'), class: "icon"
-          %h2.test-name テスト フリマ
+          %h2.test-name
+            = current_user.nickname
           .mypage-content-number
             .evaluation
               評価
               %span.count 0
             .exhibition
               出品数
-              %span.count 0
+              %span.count
+                = @user.items.count
       .tabs
         %ul.content-tabs
           %li.information
@@ -191,8 +193,8 @@
             %li.during-trading
               取引中の商品がありません
 
-= render partial: 'app-banner'
+= render partial: 'items/app-banner'
 
-= render partial: 'footer'
+= render partial: 'items/footer'
 
-= render partial: 'purchase-btn'
+= render partial: 'items/purchase-btn'

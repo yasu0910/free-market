@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :update, :destroy]
   def index
-    @items = Item.includes(:images).limit(9).order('created_at DESC')
+    @items = Item.where(buyer_id: nil).includes(:images).limit(9).order('created_at DESC')
   end
 
   def new
@@ -65,7 +65,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :category_id, :content, :brand, :status, :postage, :prefecture_id, :shipping_days, :price, images_attributes: [:url, :_destroy, :id])
+    params.require(:item).permit(:name, :category_id, :content, :brand, :status, :postage, :prefecture_id, :shipping_days, :price, images_attributes: [:url, :_destroy, :id]).merge(user_id: current_user.id)
   end
   
   def set_item
