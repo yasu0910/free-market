@@ -1,6 +1,6 @@
 %main.items-new-main
   .main__center
-    = form_for [@item] do |form|      
+    = form_for @item, html: { id: :item_form }  do |form|
       .content
         .content__title
           %h2.content__title__name
@@ -22,6 +22,7 @@
                       編集
                     %span.image-remove 削除
 
+            -# 実際に押すことができるボタン
             - if @item.persisted?
               %label{ class: "add-btn", for: "add-select-image", "data-count": "#{@item.images.count}"}
                 .label-box
@@ -34,18 +35,20 @@
                   = image_tag asset_path('icon_camera.png'), class: 'icon-camera'
                   %p.upload-info
                     クリックして画像をアップロード
-
           = form.fields_for :images do |image|
             .select-image{ "data-index": "#{image.index}" }
-              = image.file_field :url, class: "input-image", id:"item_images_attributes_#{image.index}_url"              
+              = image.file_field :url, class: "input-image", id:"item_images_attributes_#{image.index}_url"
             - if @item.persisted?
               = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
 
             -# edit機能の時は追加で写真を投稿できるようにするため
           - if @item.persisted?
             .select-image{ "data-index": "#{@item.images.count}" }
-              = file_field_tag :url, class: "input-image", name: "item[images_attributes][#{@item.images.count}][url]", id: 'add-select-image'
-          
+              = file_field_tag :url, class: "input-image", name: "item[images_attributes][#{@item.images.count}][url]", id: 'add-select-image'         
+        .image-error-box
+        - if @item.errors.messages[:images] != []
+          %p.item-form-alert.image-alert
+            画像を選択してください
 
       .content
         .content__title
@@ -54,12 +57,18 @@
           %h2.content__title__tag
             必須
         = form.text_field :name, class: "input-text", placeholder: "40字まで"
+        - if @item.errors.messages[:name] != []
+          %p.item-form-alert 
+            商品名を入力してください
         .content__title
           %h2.content__title__name
             商品の説明
           %h2.content__title__tag
             必須
-        = form.text_area :content, rows: "6", class: "input-longtext", placeholder: "商品の説明（必須 1,000文字以内)\n（色、素材、重さ、定価、注意点など）\n\n 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+        = form.text_area :content, rows: "6", class: "input-longtext", placeholder: "商品の説明（必須 1,000文字以内)\n（色、素材、重さ、定価、注意点など）\n\n 例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"       
+        - if @item.errors.messages[:content] != []
+          %p.item-form-alert 
+            商品の説明を入力してください
 
         -# jsで入力文字数を表示
         %h4.count-word
@@ -77,6 +86,9 @@
               カテゴリー
             %a.create-category__form__tag
               必須
+            - if @item.errors.messages[:category] != []
+              %p.item-form-alert.category-alert 
+                カテゴリーを選択してください    
             .create-category__form__select
               .create-category__form__select__box
                 = form.select :category_id, @category_parent_array, {selected: @category_parent}, {class: 'create-category__form__select__box__btn', id: 'parent_category'}
@@ -103,6 +115,9 @@
           = form.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3 ] ,["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態状態が悪い", 6] ], {}, class: "input-select"       
         - else
           = form.select :status, [ ["新品、未使用",1], ["未使用に近い", 2], ["目立った傷や汚れなし", 3 ] ,["やや傷や汚れあり", 4], ["傷や汚れあり", 5], ["全体的に状態状態が悪い", 6] ], { include_blank: "選択してください", selected:"" }, class: "input-select"       
+        - if @item.errors.messages[:status] != []
+          %p.item-form-alert 
+            商品の状態を選択してください
 
       .content
         %h1.content__info
@@ -116,6 +131,9 @@
           = form.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], {}, class: "input-select"
         - else
           = form.select :postage, [ ["送料込み(出品者負担)",1], ["着払い(購入者負担)", 2]], { include_blank: "選択してください", selected:"" }, class: "input-select"
+        - if @item.errors.messages[:postage] != []
+          %p.item-form-alert 
+            配送料の負担を選択してください
   
         .content__title
           %h2.content__title__name
@@ -126,7 +144,10 @@
           = form.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: "input-select"
         - else
           = form.collection_select :prefecture_id, Prefecture.all, :id, :name, { include_blank: "選択してください", selected:"" }, class: "input-select"
-  
+        - if @item.errors.messages[:prefecture_id] != []
+          %p.item-form-alert 
+            発送元の地域を選択してください
+
         .content__title
           %h2.content__title__name
             発送までの日数
@@ -135,7 +156,10 @@
         - if @item.persisted?
           = form.select :shipping_days, [ ["1〜2日で発送",1], ["2〜3日で発送", 2], ["4〜7日で発送", 3]], {}, class: "input-select"    
         - else
-          = form.select :shipping_days, [ ["1〜2日で発送",1], ["2〜3日で発送", 2], ["4〜7日で発送", 3]], { include_blank: "選択してください", selected:"" }, class: "input-select"    
+          = form.select :shipping_days, [ ["選択してください",""],["1〜2日で発送",1], ["2〜3日で発送", 2], ["4〜7日で発送", 3]], {}, class: "input-select"    
+        - if @item.errors.messages[:shipping_days] != []
+          %p.item-form-alert 
+            発送までの日数を選択してください
 
       .content
         %h1.content__info
@@ -152,6 +176,9 @@
             %p.price__yen
               ¥
             = form.number_field :price, class: "input-price", placeholder: "0", min: 300, max: 9999999
+        - if @item.errors.messages[:price] != []
+          %p.item-form-alert.price-alert 
+            販売価格を入力してください
         .calc-box
           %h3.calc-box__title
             販売手数料 (10%)         

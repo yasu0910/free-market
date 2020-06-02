@@ -8,6 +8,20 @@ main.items-new-main {
     .content {
       background-color: #fff;
       padding: 40px;
+      .item-form-alert {
+        color: red;
+        font-size: 14px;
+      }
+      .category-alert {
+        margin-top: 16px;
+      }
+      .image-alert {
+        margin-top: 16px;
+      }
+      .error {
+        color: red;
+        font-size: 14px;
+      }
       &__info {
         color: rgb(136, 136, 136);
         font-size: 14px;
@@ -16,7 +30,9 @@ main.items-new-main {
       }
       @include mandatory-field();
       @include optional-item();
-    
+      &__title {
+        margin-top: 16px;
+      }
       &__text {
         margin-top: 16px;
         font-size: 14px;
@@ -179,11 +195,11 @@ main.items-new-main {
       .input-text {
         @include input-text-field();
         margin-top: 16px;
-        margin-bottom: 32px;
+        margin-bottom: 16px;
       }
 
       .input-longtext {
-        margin-top: 16px;
+        margin: 16px 0;
         width: 100%;
         border: 1px solid #ccc;
         border-radius: 4px;
@@ -197,7 +213,6 @@ main.items-new-main {
       }
 
       .count-word {
-        margin-top: 16px;
         text-align: right;
         color: #888;
         font-size: 12px;
@@ -228,12 +243,17 @@ main.items-new-main {
         justify-content: space-between;
         align-items: center;
         margin: 16px 0;
+        .content__title {
+          margin: 0;
+        }
         .price {
           display: flex;
           align-items: center;
+          width: 300px;
           &__yen {
             font-size: 14px;
             margin-right: 8px;
+            margin: 16px 0;
           }
           .input-price {
             width: 285px;
@@ -245,6 +265,15 @@ main.items-new-main {
             text-align: right;
           }
         }
+      }
+
+      .price-alert {
+        text-align: right;
+        display: block;
+      }
+      #item_price-error {
+        text-align: right;
+        display: block;
       }
 
       .calc-box {
