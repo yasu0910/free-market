@@ -1,0 +1,37 @@
+= render partial: 'items/sub-header'
+
+%main.credits-new-main
+  .main__center
+
+    %h1.content-head
+      クレジットカード情報入力
+
+    .content-main
+      = form_with url: pay_card_index_path, method: :post, html: { id: 'charge-form', class: "content",  name: "inputForm"} do |f|
+        .content__title
+          %h2.content__title__name
+            カード番号
+          %h2.content__title__tag
+            必須
+        = f.text_field :number, class: "input-text", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+        .content__title
+          %h2.content__title__name
+            有効期限
+          %h2.content__title__tag
+            必須
+        .date
+          .select-date
+            = f.collection_select :exp_month , Month.all, :id, :name, {}, class: 'input-select-half'
+            %span 月/
+          .select-date
+            = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'input-select-half', id: "exp_year", type: "text"
+            %span 年
+        .content__title
+          %h2.content__title__name
+            セキュリティコード
+          %h2.content__title__tag
+            必須
+        = f.text_field :cvc, class: "input-text", placeholder: "カード背面4桁もしくは3桁の数字", maxlength: "4", id: "cvc"
+        #card_token
+        = f.submit '登録する', class: "submit-btn", id: 'token_submit'
+= render partial: 'items/sub-footer'
