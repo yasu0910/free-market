@@ -36,8 +36,8 @@ class CardController < ApplicationController
     if @card.blank?
       redirect_to action: "new" 
     else
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @default_card_information = customer.cards.retrieve(@card.card_id)
     end
   end
 
@@ -66,5 +66,9 @@ class CardController < ApplicationController
     end
   end
   
+  def confirm
+    @item = Item.find(params[:item_id])
+    @card = Card.where(user_id: current_user.id).first
+  end
 end
 

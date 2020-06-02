@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       member do
         post 'buy' ,to: 'card#buy'
         post 'pay', to: 'card#pay'
+        get 'confirm'
       end
     end
   end

@@ -1,0 +1,33 @@
+= render partial: 'items/sub-header'
+
+%main.main
+  .main__center-items
+    %h1.content-head
+      購入内容の確認
+
+    .content-middle
+      .item
+
+        -# 商品の画像を表示今は仮置き
+        .item__image-box
+          = image_tag asset_path('logo.png'), class: 'item-image'
+        
+        -# 商品の名前、値段を表示
+        .item__info
+          %p.item__info__name
+            item name
+          %p.item__info__price
+            = @item.name
+
+    .content-bottom
+      .content-bottom__inner
+        .buy-price
+          %h2.buy-price__name
+            支払い金額
+          
+          -# 支払い金額を表示
+          %p.buy-price__result
+            = @item.price
+        %hr.partition
+        = link_to "カードで購入" , buy_item_card_path(@item, @card), method: :post, class: "payjp_create_card", data: { turbolinks: false}
+= render partial: 'items/sub-footer'
