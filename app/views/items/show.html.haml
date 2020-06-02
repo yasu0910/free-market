@@ -24,6 +24,11 @@
         = @item.name
 
 .main
+
+  - if flash[:item_delete_alert]
+    .flash-message
+      = flash[:item_delete_alert]
+
   .main__show
     .main__show__content
       .main__show__content__item-box
