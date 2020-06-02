@@ -55,6 +55,48 @@
             }
           }
         }
+        // 編集・削除ボタン
+        &__login {
+          ul {
+            li {
+              background-color:#3CCACE;
+              text-align: center;
+              margin: 0 auto;
+              margin-bottom: 20px;
+              padding: 20px 0 20px 0;
+              width: 620px;
+              height: 60px;
+              a {
+                font-size: 30px;
+                color: #fff;
+                text-decoration: none;
+                font-weight: bold;
+                line-height: 20px;
+              }
+            }
+          }
+        }
+        // 購入ボタン
+        &__logout {
+          ul {
+            li {
+              background-color:#3CCACE;
+              text-align: center;
+              margin: 0 auto;
+              margin-bottom: 20px;
+              padding: 20px 0 20px 0;
+              width: 620px;
+              height: 60px;
+              a {
+                font-size: 30px;
+                color: #fff;
+                text-decoration: none;
+                font-weight: bold;
+                line-height: 20px;
+              }
+            }
+          }
+        }
         &__text {
           line-height: 1.5;
           font-size: 18px;
