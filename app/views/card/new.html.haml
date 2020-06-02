@@ -7,55 +7,31 @@
       クレジットカード情報入力
 
     .content-main
-      = form_tag(pay_card_index_path, method: :post, id: 'charge-form', class: "content",  name: "inputForm") do
+      = form_with url: pay_card_index_path, method: :post, html: { id: 'charge-form', class: "content",  name: "inputForm"} do |f|
         .content__title
-          %label.content__title__name
+          %h2.content__title__name
             カード番号
           %h2.content__title__tag
             必須
-        = text_field_tag "number", "", class: "input-text", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
+        = f.text_field :number, class: "input-text", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "card_number"
         .content__title
-          %label.content__title__name 有効期限
+          %h2.content__title__name
+            有効期限
           %h2.content__title__tag
             必須
         .date
           .select-date
-            %select#exp_month.input-select-half{name: "exp_month", type: "text"}
-              %option{value: ""} --
-              %option{value: "1"}01
-              %option{value: "2"}02
-              %option{value: "3"}03
-              %option{value: "4"}04
-              %option{value: "5"}05
-              %option{value: "6"}06
-              %option{value: "7"}07
-              %option{value: "8"}08
-              %option{value: "9"}09
-              %option{value: "10"}10
-              %option{value: "11"}11
-              %option{value: "12"}12
+            = f.collection_select :exp_month , Month.all, :id, :name, {}, class: 'input-select-half'
             %span 月/
           .select-date
-            %select#exp_year.input-select-half{name: "exp_year", type: "text"}
-              %option{value: ""} --
-              %option{value: "2019"}19
-              %option{value: "2020"}20
-              %option{value: "2021"}21
-              %option{value: "2022"}22
-              %option{value: "2023"}23
-              %option{value: "2024"}24
-              %option{value: "2025"}25
-              %option{value: "2026"}26
-              %option{value: "2027"}27
-              %option{value: "2028"}28
-              %option{value: "2029"}29
+            = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'input-select-half', id: "exp_year", type: "text"
             %span 年
         .content__title
-          %label.content__title__name
+          %h2.content__title__name
             セキュリティコード
           %h2.content__title__tag
             必須
-        = text_field_tag "cvc", "", class: "input-text", placeholder: "カード背面4桁もしくは3桁の数字", maxlength: "4", id: "cvc"
+        = f.text_field :cvc, class: "input-text", placeholder: "カード背面4桁もしくは3桁の数字", maxlength: "4", id: "cvc"
         #card_token
-        = submit_tag "登録する", class: "submit-btn", id: "token_submit"
+        = f.submit '登録する', class: "submit-btn", id: 'token_submit'
 = render partial: 'items/sub-footer'

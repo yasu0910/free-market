@@ -57,10 +57,10 @@ class CardController < ApplicationController
       )
       @item.update(buyer_id: current_user.id)
       if @item.buyer_id.blank?
-        flash[:alert] = '購入に失敗しました。'
+        flash[:buy_alert] = '購入に失敗しました。'
         redirect_to item_path(@item.id)
       else
-        flash[:notice] = '購入しました。'
+        flash[:buy_notice] = '購入しました。'
         redirect_to item_path(@item.id)
       end
     end
