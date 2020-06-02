@@ -72,26 +72,6 @@
                 売り切れ
         - else
           = link_to "ログインして購入" , new_user_session_path, class: "show-page-btn"
-          -# .main__show__content__item-box__login
-          -#   %ul
-          -#     = link_to "/items/#{@item.id}/edit", method: :get, class: "show-page-btn" do
-          -#       %li
-          -#         商品の編集
-          -#     = link_to "/items/#{@item.id}", method: :delete , class: "show-page-btn item-delete-btn" do
-          -#       %li
-          -#         商品の削除
-        -# - else
-        -#   - if user_signed_in?
-        -#     - if @item.buyer_id.blank?
-        -#       - if @card.blank?
-        -#         = link_to "カードを登録" , new_card_path, class: "show-page-btn", data: { turbolinks: false}
-        -#       - else
-        -#         = link_to "カードで購入" , confirm_item_card_path(@item, @card), class: "show-page-btn", data: { turbolinks: false}
-        -#     - else
-        -#       .sold-out-message
-        -#         売り切れ
-        -#   - else
-            -# = link_to "ログインして購入" , new_user_session_path, class: "show-page-btn"
         .main__show__content__item-box__text
           = @item.content
         .main__show__content__item-box__table
@@ -146,16 +126,6 @@
               = link_to "#" do
                 = icon('fa', 'flag')
                 不適切な商品の通報
-        
-        -# - if @item.buyer_id.blank?
-        -#   -if @card.blank?
-        -#     = link_to "カードを登録" , new_card_path, class: "payjp_create_card", data: { turbolinks: false}
-        -#   - else
-        -#     = link_to "カードで購入" , confirm_item_card_path(@item, @card), class: "payjp_create_card", data: { turbolinks: false}
-            
-        -# - else
-        -#   .sold-out-message
-        -#     売り切れ
       .main__show__content__comment-box
         %form.main__show__content__comment-box__new-comment#new-comment
           %textarea.main__show__content__comment-box__new-comment__text#comment-text

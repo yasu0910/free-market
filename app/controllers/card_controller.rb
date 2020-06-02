@@ -1,4 +1,5 @@
 class CardController < ApplicationController
+  before_action :set_card, only: [:delete, :show, :buy, :confirm]
   require "payjp"
   Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
 
@@ -20,12 +21,11 @@ class CardController < ApplicationController
   end
 
   def delete #PayjpとCardデータベースを削除
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
+    if @card.blank?
       redirect_to action: "new"
     else
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      if customer.delete && card.delete
+      customer = Payjp::Customer.retrieve(@card.customer_id)
+      if customer.delete && @card.delete
         flash[:card_delete_notice] = '削除しました。'
         redirect_to root_path
       else
@@ -36,7 +36,6 @@ class CardController < ApplicationController
   end
 
   def show #Cardのデータpayjpに送り情報を取り出す
-    @card = Card.where(user_id: current_user.id).first
     if @card.blank?
       redirect_to action: "new" 
     else
@@ -46,13 +45,11 @@ class CardController < ApplicationController
   end
 
   def buy #クレジット購入
-    card = Card.where(user_id: current_user.id).first
-    if card.blank?
+    if @card.blank?
       redirect_to action: "new"
       flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
       @item = Item.find(params[:item_id])
-      @card = Card.where(user_id: current_user.id).first
       Payjp.api_key = Rails.application.credentials.dig(:payjp, :PAYJP_PRIVATE_KEY)
       Payjp::Charge.create(
       amount: @item.price,
@@ -71,6 +68,10 @@ class CardController < ApplicationController
   
   def confirm
     @item = Item.find(params[:item_id])
+  end
+
+  private
+  def set_card
     @card = Card.where(user_id: current_user.id).first
   end
 end
