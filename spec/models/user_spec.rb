@@ -1,6 +1,6 @@
 require 'rails_helper'
 describe User do
-  describe '#create' do
+  describe 'ユーザー登録機能のバリデーション確認テスト' do
 
     it "nickname,email,password,first_name,last_name,first_name_hurigana,last_name_hurigana,birthdayが存在すれば登録できること" do
       user = build(:user)
