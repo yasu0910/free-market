@@ -1,6 +1,6 @@
 require 'rails_helper'
 describe DeliveryInfo do
-  describe '#create' do
+  describe '本人確認情報のバリデーション確認テスト' do
     it "first_name,last_name,first_name_hurigana,last_name_hurigana,postal_code,prefecture_id,city,streetが存在すれば登録できること" do
       delivery_info = build(:delivery_info)
       delivery_info.valid?
