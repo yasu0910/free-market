@@ -42,6 +42,7 @@ Things you may want to cover:
 ## delivery_infosテーブル
 |Column|Type|Options|
 |------|----|-------|
+|user_id|references|foreign_key: true|
 |first_name|string|null: false|
 |last_name|string|null: false|
 |first_name_hurigana|string|null: false|
@@ -53,6 +54,7 @@ Things you may want to cover:
 |building_name|string|null: false|
 |room_number|integer|
 |phone_number|integer|
+
 ### Association
 - has_one :user
 
@@ -65,11 +67,11 @@ Things you may want to cover:
 |brand|string|
 |status|string|null: false|
 |postage|string|null: false|
-|ship_from_address|string|null: false|
 |prefecture_id|string|null: false|
 |shipping_days|string|null: false|
 |price|integer|null: false|
 |category_id|references|foreign_key: true|
+|buyer_id|integer|
 ### Association
 - belongs_to :user
 - has_many :images
