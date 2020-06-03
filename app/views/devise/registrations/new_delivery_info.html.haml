@@ -43,7 +43,7 @@
                 都道府県
               %h2.content__title__tag
                 必須
-            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, { include_blank: "選択してください", selected:"" }, class: "input-text"
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {}, class: "input-text"
             
             .content__title
               %h2.content__title__name
