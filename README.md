@@ -104,3 +104,5 @@ Things you may want to cover:
 |customer_id|integer|null: false|
 ### Association
 - belongs_to :user
+
+
