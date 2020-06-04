@@ -61,35 +61,27 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.user_id == current_user.id
-      if @item.update(item_params)
-        redirect_to root_path
-      else
-        @category_parent = @item.category.root.name
-        grandchild_category = @item.category
-        child_category = grandchild_category.parent
-        @category_parent_array = Category.where(ancestry: nil).pluck(:name)
-        @category_parent_array.unshift("選択してください")
-        @category_children_array = Category.where(ancestry: child_category.ancestry)
-        @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
-        render :edit
-      end
-    else
+    if @item.update(item_params)
       redirect_to root_path
+    else
+      @category_parent = @item.category.root.name
+      grandchild_category = @item.category
+      child_category = grandchild_category.parent
+      @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+      @category_parent_array.unshift("選択してください")
+      @category_children_array = Category.where(ancestry: child_category.ancestry)
+      @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
+      render :edit
     end
   end
   
   def destroy
-    if @item.user_id == current_user.id
-      if @item.destroy
-          flash[:item_delete_notice] = "削除が完了しました"
-          redirect_to root_path
-      else
-        flash[:item_delete_alert] = '削除が失敗しました'
-        render :show
-      end
+    if @item.destroy
+        flash[:item_delete_notice] = "削除が完了しました"
+        redirect_to root_path
     else
-      redirect_to root_path
+      flash[:item_delete_alert] = '削除が失敗しました'
+      render :show
     end
   end
 
@@ -99,11 +91,8 @@ class ItemsController < ApplicationController
   end
   
   def set_item
-    if user_signed_in?
-      @item = Item.find(params[:id])
-      if @item.user_id =! current_user.id
-        redirect_to root_path
-      end
+    @item = Item.find(params[:id])
+    if user_signed_in? && @item.user_id == current_user.id
     else
       redirect_to root_path
     end
