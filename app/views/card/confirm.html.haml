@@ -10,20 +10,22 @@
 
         -# 商品の画像を表示今は仮置き
         .item__image-box
-          = image_tag asset_path('logo.png'), class: 'item-image'
+          = image_tag @item.images[0].url.url, class: 'item-image'
         
         -# 商品の名前、値段を表示
         .item__info
           %p.item__info__name
-            item name
-          %p.item__info__price
+            商品名：
             = @item.name
+          %p.item__info__price
+            値段：
+            = @item.price
 
     .content-bottom
       .content-bottom__inner
         .buy-price
           %h2.buy-price__name
-            支払い金額
+            支払い金額：
           
           -# 支払い金額を表示
           %p.buy-price__result
