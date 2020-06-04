@@ -1,15 +1,19 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:edit, :update, :destroy, :show]
+  before_action :set_item, only: [:edit, :update, :destroy]
   def index
     @items = Item.where(buyer_id: nil).includes(:images).limit(9).order('created_at DESC')
   end
 
   def new
-    @item = Item.new
-    @item.images.build
-    
-    @category_parent_array = Category.where(ancestry: nil).pluck(:name)
-    @category_parent_array.unshift("選択してください")
+    if user_signed_in?
+      @item = Item.new
+      @item.images.build
+      
+      @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+      @category_parent_array.unshift("選択してください")
+    else
+      redirect_to root_path
+    end
   end
 
   def create
@@ -25,9 +29,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
     if user_signed_in?
       @card = Card.find_by(user_id: current_user.id)
-      @item = Item.find(params[:id])
     end
   end
   def get_category_children  
@@ -57,27 +61,35 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
-      redirect_to root_path
+    if @item.user_id == current_user.id
+      if @item.update(item_params)
+        redirect_to root_path
+      else
+        @category_parent = @item.category.root.name
+        grandchild_category = @item.category
+        child_category = grandchild_category.parent
+        @category_parent_array = Category.where(ancestry: nil).pluck(:name)
+        @category_parent_array.unshift("選択してください")
+        @category_children_array = Category.where(ancestry: child_category.ancestry)
+        @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
+        render :edit
+      end
     else
-      @category_parent = @item.category.root.name
-      grandchild_category = @item.category
-      child_category = grandchild_category.parent
-      @category_parent_array = Category.where(ancestry: nil).pluck(:name)
-      @category_parent_array.unshift("選択してください")
-      @category_children_array = Category.where(ancestry: child_category.ancestry)
-      @category_grandchildren_array = Category.where(ancestry: grandchild_category.ancestry)
-      render :edit
+      redirect_to root_path
     end
   end
   
   def destroy
-    if @item.destroy
-        flash[:item_delete_notice] = "削除が完了しました"
-        redirect_to root_path
+    if @item.user_id == current_user.id
+      if @item.destroy
+          flash[:item_delete_notice] = "削除が完了しました"
+          redirect_to root_path
+      else
+        flash[:item_delete_alert] = '削除が失敗しました'
+        render :show
+      end
     else
-      flash[:item_delete_alert] = '削除が失敗しました'
-      render :show
+      redirect_to root_path
     end
   end
 
@@ -87,6 +99,13 @@ class ItemsController < ApplicationController
   end
   
   def set_item
-    @item = Item.find(params[:id])
+    if user_signed_in?
+      @item = Item.find(params[:id])
+      if @item.user_id =! current_user.id
+        redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
   end
 end
