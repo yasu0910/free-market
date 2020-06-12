@@ -88,3 +88,5 @@ gem 'ancestry'
 gem 'fog-aws'
 gem 'payjp'
 
+
+
